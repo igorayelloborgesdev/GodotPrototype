@@ -1,0 +1,1661 @@
+[gd_scene load_steps=15 format=3 uid="uid://rfp7ra5qunh0"]
+
+[ext_resource type="Texture2D" uid="uid://dgw4aa51oyeky" path="res://Art/2d/NeutralPixel.png" id="1_4s0sp"]
+[ext_resource type="Script" uid="uid://cpya3mfe6jp1y" path="res://Scripts/View/MainView.cs" id="1_5ck1u"]
+[ext_resource type="FontFile" uid="uid://sc21dkflbfwu" path="res://Art/Fonts/Akt-Regular.ttf" id="2_igc77"]
+[ext_resource type="Texture2D" uid="uid://b7avtc7bdoind" path="res://Art/2d/MenuIco.png" id="3_mr6p2"]
+[ext_resource type="Texture2D" uid="uid://cnetft44wffyv" path="res://Art/2d/TutorialIco.png" id="4_ivhl6"]
+[ext_resource type="Texture2D" uid="uid://bq8q68xg5rkt8" path="res://Art/2d/ConfigIco.png" id="5_k568d"]
+[ext_resource type="Texture2D" uid="uid://xqngpyv4wwn1" path="res://Art/2d/LoadIco.png" id="6_qt2jt"]
+[ext_resource type="Texture2D" uid="uid://cdav1c4n2lus7" path="res://Art/2d/CreditsIco.png" id="7_666oy"]
+[ext_resource type="Texture2D" uid="uid://80ojf0isu0jl" path="res://Art/2d/QuitIco.png" id="8_2h5h1"]
+[ext_resource type="Texture2D" uid="uid://b7kalwsqurvr0" path="res://Art/2d/ConfirmCheckIco.png" id="10_77uup"]
+[ext_resource type="Script" uid="uid://cpx8pptho8eer" path="res://Prefab/LangStatic.cs" id="10_oaxox"]
+[ext_resource type="Texture2D" uid="uid://c3hpb33bdg3pf" path="res://Art/2d/SaveIco.png" id="11_gn63w"]
+[ext_resource type="Texture2D" uid="uid://bixdqhjxgwn0" path="res://Art/2d/RestoreIco.png" id="12_2k77e"]
+
+[sub_resource type="Theme" id="Theme_o5acb"]
+default_font = ExtResource("2_igc77")
+default_font_size = 60
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ck1u")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+
+[node name="UpperMenuControl" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.102
+anchor_top = 0.062
+anchor_right = 0.898
+anchor_bottom = 0.123
+offset_left = -0.504005
+offset_top = -0.176003
+offset_right = 0.503906
+offset_bottom = 0.295998
+grow_horizontal = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.013
+anchor_top = 0.2
+anchor_right = 0.474
+anchor_bottom = 1.05
+offset_left = 143.934
+offset_top = -5.0
+offset_right = 143.868
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+axis_stretch_vertical = 1
+
+[node name="TitleLabel" type="Label" parent="UpperMenuControl/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_igc77")
+theme_override_font_sizes/font_size = 32
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="Button" parent="UpperMenuControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.482
+anchor_top = 0.203
+anchor_right = 0.517
+anchor_bottom = 1.036
+offset_left = 144.414
+offset_top = -5.01158
+offset_right = 143.718
+offset_bottom = -4.99012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl/MenuButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="UpperMenuControl/MenuButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mr6p2")
+expand_mode = 1
+
+[node name="TutorialButton" type="Button" parent="UpperMenuControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.529
+anchor_top = 0.203
+anchor_right = 0.564
+anchor_bottom = 1.036
+offset_left = 144.479
+offset_top = -5.01158
+offset_right = 143.783
+offset_bottom = -4.99012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl/TutorialButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="UpperMenuControl/TutorialButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ivhl6")
+expand_mode = 1
+
+[node name="ConfigButton" type="Button" parent="UpperMenuControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.577
+anchor_top = 0.203
+anchor_right = 0.611
+anchor_bottom = 1.036
+offset_left = 143.525
+offset_top = -5.01158
+offset_right = 143.848
+offset_bottom = -4.99012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl/ConfigButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="UpperMenuControl/ConfigButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_k568d")
+expand_mode = 1
+
+[node name="LoadButton" type="Button" parent="UpperMenuControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.624
+anchor_top = 0.203
+anchor_right = 0.658
+anchor_bottom = 1.036
+offset_left = 143.59
+offset_top = -5.01158
+offset_right = 143.914
+offset_bottom = -4.99012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl/LoadButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="UpperMenuControl/LoadButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_qt2jt")
+expand_mode = 1
+
+[node name="CreditsButton" type="Button" parent="UpperMenuControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.671
+anchor_top = 0.203
+anchor_right = 0.705
+anchor_bottom = 1.036
+offset_left = 143.655
+offset_top = -5.01158
+offset_right = 143.979
+offset_bottom = -4.99012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl/CreditsButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="UpperMenuControl/CreditsButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.371
+anchor_top = 0.146
+anchor_right = 0.657
+anchor_bottom = 0.842
+offset_left = 0.0149994
+offset_top = 0.452
+offset_right = 0.00499916
+offset_bottom = 0.0039978
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_666oy")
+expand_mode = 1
+
+[node name="QuitButton" type="Button" parent="UpperMenuControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.718
+anchor_top = 0.203
+anchor_right = 0.752
+anchor_bottom = 1.036
+offset_left = 143.72
+offset_top = -5.01158
+offset_right = 144.044
+offset_bottom = -4.99012
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="UpperMenuControl/QuitButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="UpperMenuControl/QuitButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2h5h1")
+expand_mode = 1
+
+[node name="MainMenuScreenControl" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.099
+anchor_top = 0.2
+anchor_right = 0.901
+anchor_bottom = 0.8
+offset_left = -0.0800171
+offset_right = 0.0799561
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuScreenControl0" type="Control" parent="MainMenuScreenControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305
+anchor_top = 0.279
+anchor_right = 0.695
+anchor_bottom = 0.721
+offset_left = 0.299988
+offset_top = 0.207993
+offset_right = -0.300049
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Screen 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "mainMenu"
+
+[node name="MainMenuScreenControl1" type="Control" parent="MainMenuScreenControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305
+anchor_top = 0.279
+anchor_right = 0.695
+anchor_bottom = 0.721
+offset_left = 0.299988
+offset_top = 0.207993
+offset_right = -0.300049
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Screen 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "tutorialMessage"
+
+[node name="MainMenuScreenControl2" type="Control" parent="MainMenuScreenControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LanguageGameButton" type="Button" parent="MainMenuScreenControl/MainMenuScreenControl2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.593
+anchor_right = 0.632
+anchor_bottom = 0.677
+offset_left = -0.420044
+offset_top = -0.264038
+offset_right = 0.719971
+offset_bottom = 0.303955
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenControl/MainMenuScreenControl2/LanguageGameButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl2/LanguageGameButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.982
+offset_bottom = 1.008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Language"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "language"
+
+[node name="InputGameButton" type="Button" parent="MainMenuScreenControl/MainMenuScreenControl2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373
+anchor_top = 0.778
+anchor_right = 0.632
+anchor_bottom = 0.863
+offset_left = -0.420044
+offset_top = -0.144043
+offset_right = 0.719971
+offset_bottom = -0.223999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenControl/MainMenuScreenControl2/InputGameButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl2/InputGameButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.982
+offset_bottom = 1.008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Input"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "input"
+
+[node name="MainMenuScreenControl3" type="Control" parent="MainMenuScreenControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.279
+anchor_right = 0.892
+anchor_bottom = 0.721
+offset_left = 0.679993
+offset_top = 0.207993
+offset_right = -0.680054
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Screen 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "loadMenu"
+
+[node name="MainMenuScreenControl4" type="Control" parent="MainMenuScreenControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305
+anchor_top = 0.279
+anchor_right = 0.695
+anchor_bottom = 0.721
+offset_left = 0.299988
+offset_top = 0.207993
+offset_right = -0.300049
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Screen 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "credit"
+
+[node name="MainMenuScreenControl5" type="Control" parent="MainMenuScreenControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuScreenControl/MainMenuScreenControl5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.305
+anchor_top = 0.279
+anchor_right = 0.695
+anchor_bottom = 0.721
+offset_left = 0.299988
+offset_top = 0.207993
+offset_right = -0.300049
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Screen 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "exitConfirmation"
+
+[node name="QuitGameButton" type="Button" parent="MainMenuScreenControl/MainMenuScreenControl5"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.481351
+anchor_top = 0.629802
+anchor_right = 0.514351
+anchor_bottom = 0.706802
+offset_left = 0.719971
+offset_top = -0.112
+offset_right = -0.0999756
+offset_bottom = -0.00802612
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenControl/MainMenuScreenControl5/QuitGameButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuScreenControl/MainMenuScreenControl5/QuitGameButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_77uup")
+expand_mode = 1
+
+[node name="MainMenuScreenConfigControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="MainMenuScreenConfigControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.288
+anchor_top = 0.096
+anchor_right = 0.626
+anchor_bottom = 0.162
+offset_left = 0.201111
+offset_top = -0.480934
+offset_right = -0.372192
+offset_bottom = 0.11528
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+axis_stretch_vertical = 1
+
+[node name="TitleLabel" type="Label" parent="MainMenuScreenConfigControl/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_igc77")
+theme_override_font_sizes/font_size = 32
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="MainMenuScreenConfigControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.641
+anchor_top = 0.098
+anchor_right = 0.674
+anchor_bottom = 0.163
+offset_left = -0.276611
+offset_top = 0.0243149
+offset_right = 0.958374
+offset_bottom = -0.160675
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/BackButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuScreenConfigControl/BackButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2h5h1")
+expand_mode = 1
+
+[node name="InputScreenControl" type="Control" parent="MainMenuScreenConfigControl"]
+visible = false
+layout_mode = 1
+anchor_top = 0.22
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.399979
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InputUpTitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2105
+anchor_top = 0.096
+anchor_right = 0.3295
+anchor_bottom = 0.163
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputUpTitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "UP"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "up"
+
+[node name="InputUpButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.096
+anchor_right = 0.452
+anchor_bottom = 0.163
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputUpButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputUpButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input UP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputDownTitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2105
+anchor_top = 0.181511
+anchor_right = 0.3295
+anchor_bottom = 0.248511
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputDownTitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "DOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "down"
+
+[node name="InputDownButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.181511
+anchor_right = 0.452
+anchor_bottom = 0.248511
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputDownButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputDownButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input DOWN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputLeftTitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2105
+anchor_top = 0.267021
+anchor_right = 0.3295
+anchor_bottom = 0.334021
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputLeftTitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "LEFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "left"
+
+[node name="InputLeftButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.267021
+anchor_right = 0.452
+anchor_bottom = 0.334021
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputLeftButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputLeftButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input LEFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputRightTitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2105
+anchor_top = 0.352532
+anchor_right = 0.3295
+anchor_bottom = 0.419532
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputRightTitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "RIGHT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "right"
+
+[node name="InputRightButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.352532
+anchor_right = 0.452
+anchor_bottom = 0.419532
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputRightButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputRightButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input RIGHT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputButton1TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.489667
+anchor_top = 0.096
+anchor_right = 0.608667
+anchor_bottom = 0.163
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputButton1TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Button 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "button1"
+
+[node name="InputButton1Button" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.619167
+anchor_top = 0.096
+anchor_right = 0.731167
+anchor_bottom = 0.163
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputButton1Button"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputButton1Button/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input Button1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputButton2TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.489667
+anchor_top = 0.181511
+anchor_right = 0.608667
+anchor_bottom = 0.248511
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputButton2TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Button2"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "button2"
+
+[node name="InputButton2Button" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.619167
+anchor_top = 0.181511
+anchor_right = 0.731167
+anchor_bottom = 0.248511
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputButton2Button"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputButton2Button/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input Button2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputPauseTitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.489667
+anchor_top = 0.267021
+anchor_right = 0.608667
+anchor_bottom = 0.334021
+offset_left = 0.839966
+offset_top = 0.168015
+offset_right = -0.640015
+offset_bottom = -0.245987
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="LangStatic" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputPauseTitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "pause"
+
+[node name="InputPauseButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.619167
+anchor_top = 0.267021
+anchor_right = 0.731167
+anchor_bottom = 0.334021
+offset_left = 0.199951
+offset_top = 0.167999
+offset_right = -0.840027
+offset_bottom = -0.246002
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/InputPauseButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/InputPauseButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Input Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoystickButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.490769
+anchor_top = 0.47
+anchor_right = 0.668
+anchor_bottom = 0.527
+offset_left = -0.276611
+offset_top = 0.260468
+offset_right = 0.439819
+offset_bottom = -0.217499
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/JoystickButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/JoystickButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Joystick"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "joystick"
+
+[node name="KeyboardButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.299102
+anchor_top = 0.47
+anchor_right = 0.477
+anchor_bottom = 0.527
+offset_left = -0.276611
+offset_top = 0.260468
+offset_right = -0.840637
+offset_bottom = -0.217499
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/KeyboardButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/InputScreenControl/KeyboardButton/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Keyboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_oaxox")
+langKey = "keyboard"
+
+[node name="SaveButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444936
+anchor_top = 0.575
+anchor_right = 0.479
+anchor_bottom = 0.652
+offset_left = -0.276611
+offset_top = -0.150055
+offset_right = -0.680054
+offset_bottom = 0.0159912
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/SaveButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuScreenConfigControl/InputScreenControl/SaveButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_gn63w")
+expand_mode = 1
+
+[node name="RestoreButton" type="Button" parent="MainMenuScreenConfigControl/InputScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.486833
+anchor_top = 0.575
+anchor_right = 0.521
+anchor_bottom = 0.652
+offset_left = -0.276611
+offset_top = -0.286163
+offset_right = -0.877319
+offset_bottom = -0.120117
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/InputScreenControl/RestoreButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuScreenConfigControl/InputScreenControl/RestoreButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.071
+anchor_right = 0.881
+anchor_bottom = 0.928
+offset_left = -0.170055
+offset_top = 0.0289292
+offset_right = 2.09172
+offset_bottom = 0.0260086
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_2k77e")
+expand_mode = 1
+
+[node name="LanguageScreenControl" type="Control" parent="MainMenuScreenConfigControl"]
+layout_mode = 1
+anchor_top = 0.22
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.399979
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lang0Button" type="Button" parent="MainMenuScreenConfigControl/LanguageScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.382436
+anchor_top = 0.327482
+anchor_right = 0.559667
+anchor_bottom = 0.384482
+offset_left = -0.276611
+offset_top = 0.260468
+offset_right = 0.439819
+offset_bottom = -0.217499
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/LanguageScreenControl/Lang0Button"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/LanguageScreenControl/Lang0Button/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "English"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lang1Button" type="Button" parent="MainMenuScreenConfigControl/LanguageScreenControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.382435
+anchor_top = 0.412993
+anchor_right = 0.560333
+anchor_bottom = 0.469993
+offset_left = -0.276611
+offset_top = 0.260468
+offset_right = -0.840637
+offset_bottom = -0.217499
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenConfigControl/LanguageScreenControl/Lang1Button"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="Label" type="Label" parent="MainMenuScreenConfigControl/LanguageScreenControl/Lang1Button/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Português"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuScreenModalControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="MainMenuScreenModalControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenModalControl"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.288
+anchor_top = 0.096
+anchor_right = 0.626
+anchor_bottom = 0.162
+offset_left = 0.201111
+offset_top = -0.480934
+offset_right = -0.372192
+offset_bottom = 0.11528
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+axis_stretch_vertical = 1
+
+[node name="TitleLabel" type="Label" parent="MainMenuScreenModalControl/TitleNinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_igc77")
+theme_override_font_sizes/font_size = 32
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="MainMenuScreenModalControl"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.641
+anchor_top = 0.098
+anchor_right = 0.674
+anchor_bottom = 0.163
+offset_left = -0.276611
+offset_top = 0.0243149
+offset_right = 0.958374
+offset_bottom = -0.160675
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleNinePatchRect" type="NinePatchRect" parent="MainMenuScreenModalControl/BackButton"]
+modulate = Color(0.764706, 0.764706, 0.764706, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4s0sp")
+region_rect = Rect2(10, 0, 10, 0)
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuScreenModalControl/BackButton/TitleNinePatchRect"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.146
+anchor_right = 0.913
+anchor_bottom = 0.83
+offset_left = 0.0589695
+offset_top = -0.012001
+offset_right = -0.0110321
+offset_bottom = -0.00400162
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_2h5h1")
+expand_mode = 1
+
+[node name="ModalScreenControl" type="Control" parent="MainMenuScreenModalControl"]
+layout_mode = 1
+anchor_top = 0.22
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.399979
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuScreenModalControl/ModalScreenControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.244
+anchor_top = 0.234
+anchor_right = 0.756
+anchor_bottom = 0.766
+offset_left = -0.880035
+offset_top = -0.110016
+offset_right = 0.880005
+offset_bottom = 0.109985
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o5acb")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Idioma"
+horizontal_alignment = 1
+vertical_alignment = 1

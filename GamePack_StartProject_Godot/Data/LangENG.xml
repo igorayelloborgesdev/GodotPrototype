@@ -1,0 +1,29 @@
+<message>
+    <text id="exitConfirmation">Are you sure you want to exit?</text>
+    <text id="tutorialMessage">This is a tutorial message.</text>
+	<text id="credit">This is a credit message.</text>
+	<text id="mainMenu">This is a main menu message.</text>
+	<text id="loadMenu">This is a load message.</text>
+	<text id="language">Language</text>
+	<text id="input">Input</text>
+	<text id="up">UP</text>
+	<text id="down">DOWN</text>
+	<text id="left">LEFT</text>
+	<text id="right">RIGHT</text>
+	<text id="button1">Button 1</text>
+	<text id="button2">Button 2</text>
+	<text id="pause">PAUSE</text>
+	<text id="keyboard">Keyboard</text>
+	<text id="joystick">Joystick</text>
+	<text id="main">Main menu</text>
+	<text id="tutorial">Tutorial</text>
+	<text id="config">Config</text>
+	<text id="load">Load</text>
+	<text id="credits">Credits</text>
+	<text id="quit">Quit</text>
+	<text id="configSaved">Config Saved</text>
+	<text id="configSavedError">ERROR: Config NOT Saved</text>
+	<text id="saveConfig">Save config</text>
+	<text id="restoreConfig">Restore config</text>
+	<text id="restoredConfig">Config restored</text>
+</message>

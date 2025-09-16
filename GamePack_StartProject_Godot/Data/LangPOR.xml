@@ -1,0 +1,29 @@
+<message>
+    <text id="exitConfirmation">Você tem certeza de que deseja sair?</text>
+    <text id="tutorialMessage">Esta é uma mensagem de tutorial.</text>
+	<text id="credit">Esta é uma mensagem de créditos.</text>
+	<text id="mainMenu">Esta é uma mensagem de menu principal.</text>
+	<text id="loadMenu">Esta é uma mensagem de load game.</text>
+	<text id="language">Idioma</text>
+	<text id="input">Controle</text>
+	<text id="up">CIMA</text>
+	<text id="down">BAIXO</text>
+	<text id="left">ESQUERDA</text>
+	<text id="right">DIREITA</text>
+	<text id="button1">BOTÃO 1</text>
+	<text id="button2">BOTÃO 2</text>
+	<text id="pause">PAUSA</text>
+	<text id="keyboard">Teclado</text>
+	<text id="joystick">Joystick</text>
+	<text id="main">Menu principal</text>
+	<text id="tutorial">Tutorial</text>
+	<text id="config">Configurações</text>
+	<text id="load">Carregar</text>
+	<text id="credits">Créditos</text>
+	<text id="quit">Sair</text>
+	<text id="configSaved">Configurações Salvas</text>
+	<text id="configSavedError">ERRO: Configurações NÃO Salvas</text>
+	<text id="saveConfig">Salvar configurações</text>
+	<text id="restoreConfig">Restaurar configurações</text>
+	<text id="restoredConfig">Configurações restauradas</text>
+</message>
