@@ -1,0 +1,199 @@
+[gd_scene load_steps=9 format=3 uid="uid://da8ajl2rairlh"]
+
+[ext_resource type="Script" uid="uid://b0feowju8gkn1" path="res://Prototype/Tennis/TennisPrototypeView.cs" id="1_5lq0o"]
+[ext_resource type="PackedScene" uid="uid://3ibdsi8xrtgv" path="res://Prototype/Tennis/tennis_court.gltf" id="2_hogre"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bfjop"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfjop"]
+cull_mode = 2
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hogre"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dhd73"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bfjop"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hogre"]
+
+[node name="TennisPrototype" type="Node3D"]
+script = ExtResource("1_5lq0o")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 1.71505e-14, -1.80153e-14, -4.73655e-16, 0.737277, 0.67559, 2.4869e-14, -0.67559, 0.737277, 0, 41.297, 55.9)
+fov = 40.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.906367, 0.422492, 0, -0.422492, 0.906367, 0, 2.80079, 7.94007)
+shadow_enabled = true
+
+[node name="Net" type="MeshInstance3D" parent="."]
+transform = Transform3D(49.345, 0, -1.42109e-14, 0, 3, 0, 1.36424e-12, 0, 1, 0, 1.351, 0)
+mesh = SubResource("QuadMesh_bfjop")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfjop")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Net"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Net/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hogre")
+
+[node name="NetBlock" type="MeshInstance3D" parent="."]
+transform = Transform3D(76.745, 0, 3.55271e-15, 0, 3, 0, 0, 0, 1, 0, 1.351, 0)
+visible = false
+mesh = SubResource("QuadMesh_bfjop")
+surface_material_override/0 = SubResource("StandardMaterial3D_bfjop")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NetBlock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NetBlock/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hogre")
+
+[node name="tennis_court" parent="." instance=ExtResource("2_hogre")]
+transform = Transform3D(-6.55671e-08, 0, 2, 0, 2, 0, -1.5, 0, -8.74228e-08, 0, 0.01, 0)
+
+[node name="Tennis_Court_ColliderMeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-06, -200, -8.74228e-06, 0, -8.74228e-06, 200, -200, 8.74228e-06, 3.82137e-13, -8.86361, 0, -12.4666)
+visible = false
+mesh = SubResource("QuadMesh_dhd73")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tennis_Court_ColliderMeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tennis_Court_ColliderMeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bfjop")
+
+[node name="ServePlayerLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0.072, 31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0.072, 31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftMax" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.70024, 0.072, 31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightMax" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.817, 0.072, 31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftMin" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.8171, 0.072, 31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightMin" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.7, 0.072, 31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeft2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0.072, -31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRight2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0.072, -31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftMax2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.70024, 0.072, -31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightMax2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.817, 0.072, -31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftMin2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.8171, 0.072, -31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightMin2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.7, 0.072, -31)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightP1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0.072, -12.404)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightP2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.25, 0.072, -12.404)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerRightP3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.5, 0.072, -12.404)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftP1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0.072, -12.404)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftP2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.25, 0.072, -12.404)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="ServePlayerLeftP3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.5, 0.072, -12.404)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Center1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.072, 3)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Center2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.072, 13.526)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Center3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.072, 28.7592)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Left1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.6918, 0.072, 3)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Left2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.6918, 0.072, 13.526)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Left3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.6918, 0.072, 28.7592)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Right1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.692, 0.072, 3)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Right2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.692, 0.072, 13.526)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
+
+[node name="P1Right3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.692, 0.072, 28.7592)
+visible = false
+mesh = SubResource("BoxMesh_hogre")
