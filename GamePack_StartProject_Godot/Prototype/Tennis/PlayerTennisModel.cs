@@ -25,6 +25,19 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
             Left = 1,
             Right = 2            
         }
+        public BackForeHandDirectionEnum backForeHandDirectionEnum = BackForeHandDirectionEnum.Center;
+        public enum BackForeHandDirectionEnum
+        {
+            CenterDown = 0,
+            Center = 1,
+            CenterUp = 2,
+            LeftDown = 3,
+            Left = 4,
+            LeftUp = 5,
+            RightDown = 6,
+            Right = 7,
+            RightUp = 8
+        }
 
     }
 }

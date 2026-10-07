@@ -30,6 +30,8 @@ public partial class TennisBall : CharacterBody3D
 
     private PackedScene boxScene = null;
     private List<TrajectoryPoint> trajectoryPoint = new();
+    private List<Node3D> impactBoxes = new();
+    private Node3D boxAI = null;
     //Reset
     private float Gravity = 0.0f;    
     private Vector3 velocity = Vector3.Zero;
@@ -100,25 +102,29 @@ public partial class TennisBall : CharacterBody3D
         }
         else if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.HitBall)
         {
-
-            var servePlayerRight = GetServePosition(gameplayTennisModel.playerTennisModel);
+            var servePlayerRight = gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP1 ? 
+                GetServePosition(gameplayTennisModel.playerTennisModel) : GetServePositionP2(gameplayTennisModel.playerTennisModel);
             CalcularVelocidadesParaAlvo(servePlayerRight.GlobalPosition.X, servePlayerRight.GlobalPosition.Z, alturaMaximaDesejada);
             trajectoryPoint = PredictTrajectory();
 
             TrajectoryPoint hit = GetBestHitPoint(bestHitPointMin, bestHitPointMax);
             bestHitPosition = hit.Position;
-            Node3D boxAI = boxScene.Instantiate<Node3D>();
-            GetParent().CallDeferred(Node.MethodName.AddChild, boxAI);
+
+            boxAI = boxScene.Instantiate<Node3D>();
+
+            GetParent().CallDeferred(
+                Node.MethodName.AddChild,
+                boxAI
+            );
+
             boxAI.Position = hit.Position;
 
             gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel.ServeEnum.InGame;
-            gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP2;
+            gameplayTennisModel.gameEnum = gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP1 ? GameplayTennisModel.GameEnum.InGameP2 : GameplayTennisModel.GameEnum.InGameP1;
 
             foreach (Vector3 impact in PredictBounces(2))
             {
-                Node3D box = boxScene.Instantiate<Node3D>();
-                GetParent().CallDeferred(Node.MethodName.AddChild, box);
-                box.Position = impact;
+                CreateImpactBox(impact);
             }
         }
         else if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
@@ -126,13 +132,25 @@ public partial class TennisBall : CharacterBody3D
             if (theBallWasHit)
             {                
                 theBallWasHit = false;
-                
-                var backHandPlayer = gameplayTennisModel.backHandPosition;
+
+                RemoveImpactBoxes();
+                RemoveBoxAI();
+
+                var backHandPlayer = gameplayTennisModel.backHandPosition;//<-
                 CalcularVelocidadesParaAlvo(backHandPlayer.X, backHandPlayer.Z, alturaMaximaDesejada);
                 trajectoryPoint = PredictTrajectory();
 
                 TrajectoryPoint hit = GetBestHitPoint(bestHitPointMin, bestHitPointMax);
-                bestHitPosition = hit.Position;                                
+
+                if (hit != null)
+                {                    
+                    bestHitPosition = hit.Position;                                        
+                }
+
+                foreach (Vector3 impact in PredictBounces(2))
+                {
+                    CreateImpactBox(impact);
+                }
             }
 
             velocity.Y += Gravity * (float)delta;
@@ -155,19 +173,34 @@ public partial class TennisBall : CharacterBody3D
         }
   
     }
+
+    public void SetP2Serve()
+    {
+        ballDirectionEnum = BallDirectionEnum.up;
+        tossStarted = true;
+        SpeedMultiplier = 1.75f;
+        Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
+        Vector3 pos = GlobalPosition;
+        float alvoX = pos.X;
+        float alvoZ = pos.Z;
+        float altura = pos.Y + 8.0f;
+        CalcularVelocidadesParaAlvo(alvoX, alvoZ, altura);
+    }
+
     private TrajectoryPoint GetBestHitPoint(float minHeight, float maxHeight)
     {
         foreach (var p in trajectoryPoint)
         {
             if (p.Velocity.Y > 0 &&
                 p.Position.Y >= minHeight &&
-                p.Position.Y <= maxHeight)
+                p.Position.Y <= maxHeight &&
+                p.Position.Z < 0)
             {
                 return p;
             }
         }
 
-        return null;
+        return trajectoryPoint[trajectoryPoint.Count - 1];
     }
     private Node3D GetServePosition(PlayerTennisModel playerTennisModel)
     {
@@ -188,6 +221,28 @@ public partial class TennisBall : CharacterBody3D
             return gameplayTennisModel.servePlayerLeftP2;
         }
 
+    }
+
+    private Node3D GetServePositionP2(PlayerTennisModel playerTennisModel)
+    {
+        var servePosition = (gameplayTennisModel.playerAI as PlayerTennisAI).DefineServeP2();
+        if (gameplayTennisModel.isServeLeft)
+        {
+            if (servePosition == 0)
+                return gameplayTennisModel.servePlayerLeftP3_1;
+            else if (servePosition == 1)
+                return gameplayTennisModel.servePlayerLeftP1_1;
+            return gameplayTennisModel.servePlayerLeftP2_1;
+        }
+        else
+        {
+            if (servePosition == 0)
+                return gameplayTennisModel.servePlayerRightP1_1;
+            else if (servePosition == 1)
+                return gameplayTennisModel.servePlayerRightP3_1;
+            return gameplayTennisModel.servePlayerRightP2_1;
+            
+        }
     }
 
     public Vector3 PredictLandingPoint(float groundY = 0)
@@ -363,26 +418,68 @@ public partial class TennisBall : CharacterBody3D
         this.gameplayTennisModel.servePlayerLeftP1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerLeftP1Name);
         this.gameplayTennisModel.servePlayerLeftP2 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerLeftP2Name);
         this.gameplayTennisModel.servePlayerLeftP3 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerLeftP3Name);
+
+        this.gameplayTennisModel.servePlayerRightP1_1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerRightP1_1Name);
+        this.gameplayTennisModel.servePlayerRightP2_1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerRightP2_1Name);
+        this.gameplayTennisModel.servePlayerRightP3_1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerRightP3_1Name);
+
+        this.gameplayTennisModel.servePlayerLeftP1_1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerLeftP1_1Name);
+        this.gameplayTennisModel.servePlayerLeftP2_1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerLeftP2_1Name);
+        this.gameplayTennisModel.servePlayerLeftP3_1 = this.GetNode<Node3D>(this.gameplayTennisModel.servePlayerLeftP3_1Name);
         return this;
     }
 
     public TennisBall SetCourtPointBuilder()
     {
-        for(int i = 1; i < 4; i++)
-        {
-            var P1Center = this.GetNode<Node3D>(this.gameplayTennisModel.P1CenterName + i.ToString());
-            this.gameplayTennisModel.P1CenterList.Add(P1Center);
+        
+        var P1Front1 = this.GetNode<Node3D>(this.gameplayTennisModel.P1CenterName + (1).ToString());
+        this.gameplayTennisModel.P1FrontList.Add(P1Front1);
+        var P1Front2 = this.GetNode<Node3D>(this.gameplayTennisModel.P1LeftName + (1).ToString());
+        this.gameplayTennisModel.P1FrontList.Add(P1Front2);
+        var P1Front3 = this.GetNode<Node3D>(this.gameplayTennisModel.P1RightName + (1).ToString());
+        this.gameplayTennisModel.P1FrontList.Add(P1Front3);
 
-            var P1Left = this.GetNode<Node3D>(this.gameplayTennisModel.P1LeftName + i.ToString());
-            this.gameplayTennisModel.P1LeftList.Add(P1Left);
+        var P1Center1 = this.GetNode<Node3D>(this.gameplayTennisModel.P1CenterName + (2).ToString());
+        this.gameplayTennisModel.P1CenterList.Add(P1Center1);
+        var P1Center2 = this.GetNode<Node3D>(this.gameplayTennisModel.P1LeftName + (2).ToString());
+        this.gameplayTennisModel.P1CenterList.Add(P1Center2);
+        var P1Center3 = this.GetNode<Node3D>(this.gameplayTennisModel.P1RightName + (2).ToString());
+        this.gameplayTennisModel.P1CenterList.Add(P1Center3);
 
-            var P1Right = this.GetNode<Node3D>(this.gameplayTennisModel.P1RightName + i.ToString());
-            this.gameplayTennisModel.P1RightList.Add(P1Right);
-        }
+        var P1Back1 = this.GetNode<Node3D>(this.gameplayTennisModel.P1CenterName + (3).ToString());
+        this.gameplayTennisModel.P1BackList.Add(P1Back1);
+        var P1Back2 = this.GetNode<Node3D>(this.gameplayTennisModel.P1LeftName + (3).ToString());
+        this.gameplayTennisModel.P1BackList.Add(P1Back2);
+        var P1Back3 = this.GetNode<Node3D>(this.gameplayTennisModel.P1RightName + (3).ToString());
+        this.gameplayTennisModel.P1BackList.Add(P1Back3);
 
-        this.gameplayTennisModel.P1BallPlaceList.AddRange(this.gameplayTennisModel.P1CenterList);
-        this.gameplayTennisModel.P1BallPlaceList.AddRange(this.gameplayTennisModel.P1LeftList);
-        this.gameplayTennisModel.P1BallPlaceList.AddRange(this.gameplayTennisModel.P1RightList);
+
+        this.gameplayTennisModel.P1BallPlaceList.Add(this.gameplayTennisModel.P1FrontList);
+        this.gameplayTennisModel.P1BallPlaceList.Add(this.gameplayTennisModel.P1CenterList);
+        this.gameplayTennisModel.P1BallPlaceList.Add(this.gameplayTennisModel.P1BackList);
+        
+
+        var P2Front1 = this.GetNode<Node3D>(this.gameplayTennisModel.P2CenterName + (1).ToString());
+        var P2Center1 = this.GetNode<Node3D>(this.gameplayTennisModel.P2CenterName + (2).ToString());
+        var P2Back1 = this.GetNode<Node3D>(this.gameplayTennisModel.P2CenterName + (3).ToString());
+        var P2Front3 = this.GetNode<Node3D>(this.gameplayTennisModel.P2RightName + (1).ToString());
+        var P2Center3 = this.GetNode<Node3D>(this.gameplayTennisModel.P2RightName + (2).ToString());
+        var P2Back3 = this.GetNode<Node3D>(this.gameplayTennisModel.P2RightName + (3).ToString());
+        var P2Front2 = this.GetNode<Node3D>(this.gameplayTennisModel.P2LeftName + (1).ToString());        
+        var P2Center2 = this.GetNode<Node3D>(this.gameplayTennisModel.P2LeftName + (2).ToString());        
+        var P2Back2 = this.GetNode<Node3D>(this.gameplayTennisModel.P2LeftName + (3).ToString());
+
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Front1);
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Center1);
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Back1);
+
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Front3);
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Center3);
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Back3);
+
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Front2);
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Center2);
+        this.gameplayTennisModel.P2BallPlaceList.Add(P2Back2);
 
         return this;
     }
@@ -390,13 +487,15 @@ public partial class TennisBall : CharacterBody3D
     private void BallStates()
     {
         if (gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP1)
-        {
+        {            
             if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.Stand)
+            {                
                 this.GlobalPosition = (gameplayTennisModel.player as PlayerTennis).serveBallRef.GlobalPosition;
+            }                
             else if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.ThrowBall)
             {
                 if (!tossStarted)
-                {
+                {                 
                     ballDirectionEnum = BallDirectionEnum.up;
                     tossStarted = true;
                     SpeedMultiplier = 1.75f;
@@ -409,6 +508,30 @@ public partial class TennisBall : CharacterBody3D
                 }
             }
         }
+        else if (gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP2)
+        {
+            
+            if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.Stand)
+            {
+                this.GlobalPosition = (gameplayTennisModel.playerAI as PlayerTennisAI).serveBallRef.GlobalPosition;
+                gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel.ServeEnum.ThrowBall;
+            }                
+            else if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.ThrowBall)
+            {             
+                if (!tossStarted)
+                {                    
+                    ballDirectionEnum = BallDirectionEnum.up;
+                    tossStarted = true;
+                    SpeedMultiplier = 1.75f;
+                    Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
+                    Vector3 pos = GlobalPosition;
+                    float alvoX = pos.X;
+                    float alvoZ = pos.Z;
+                    float altura = pos.Y + 8.0f;
+                    CalcularVelocidadesParaAlvo(alvoX, alvoZ, altura);
+                }
+            }
+        }
     }
 
     public void Reset()
@@ -416,11 +539,50 @@ public partial class TennisBall : CharacterBody3D
         Gravity = 0.0f;
         velocity = Vector3.Zero;
         SpeedMultiplier = 1.0f;
-        tossStarted = false;
+        tossStarted = false;        
         ballDirectionEnum = BallDirectionEnum.neutral;
         gameplayTennisModel.gameEnum = GameEnum.ServeP1;
         ballDirectionEnum = BallDirectionEnum.neutral;
         theBallWasHit = false;
     }
 
+    public void ResetServeP2()
+    {
+        Gravity = 0.0f;
+        velocity = Vector3.Zero;
+        SpeedMultiplier = 1.0f;
+        tossStarted = false;
+        ballDirectionEnum = BallDirectionEnum.neutral;
+        gameplayTennisModel.gameEnum = GameEnum.ServeP2;
+        ballDirectionEnum = BallDirectionEnum.neutral;
+        theBallWasHit = false;
+    }
+    private void RemoveImpactBoxes()
+    {
+        foreach (Node3D box in impactBoxes)
+        {
+            if (IsInstanceValid(box))
+                box.QueueFree();
+        }
+
+        impactBoxes.Clear();
+    }
+    private void CreateImpactBox(Vector3 position)
+    {
+        Node3D box = boxScene.Instantiate<Node3D>();
+
+        GetParent().CallDeferred(Node.MethodName.AddChild, box);
+
+        box.Position = new Vector3(position.X, 0.0f, position.Z);
+
+        impactBoxes.Add(box);
+    }
+    private void RemoveBoxAI()
+    {
+        if (IsInstanceValid(boxAI))
+        {
+            boxAI.QueueFree();
+            boxAI = null;
+        }
+    }
 }

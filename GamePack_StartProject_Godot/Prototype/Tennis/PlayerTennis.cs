@@ -43,62 +43,21 @@ public partial class PlayerTennis : CharacterBody3D
     private TennisPlayerMoveStrategy DefineTennisPlayerMoveStrategy()
     {
         if (gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP1 && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.Stand)
-            return new ConcreteStrategyMoveServe().GameplayTennisModelBuilder(gameplayTennisModel);
-        if (gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP1 && 
-            (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.ThrowBall || 
+        {         
+            return new ConcreteStrategyMoveServe().GameplayTennisModelBuilder(gameplayTennisModel);         
+        }            
+        if (gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP1 &&
+            (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.ThrowBall ||
             gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.HitBall))
-            return new ConcreteStrategyServeDirection().GameplayTennisModelBuilder(gameplayTennisModel);
-
+        {         
+            return new ConcreteStrategyServeDirection().GameplayTennisModelBuilder(gameplayTennisModel);            
+        }            
+        if (gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.ServeP2)
+        {            
+            return new ConcreteStrategyServeReceive().GameplayTennisModelBuilder(gameplayTennisModel);
+        }
+        
         return new ConcreteStrategyMove().GameplayTennisModelBuilder(gameplayTennisModel);
-    }
-
-    private void GetPositionInput(ref Vector3 direction)
-    {
-        if (Input.IsKeyPressed(Key.Left) && Input.IsKeyPressed(Key.Up))
-        {
-            direction.X -= 0.7f;
-            direction.Z -= 0.7f;
-            return;
-        }
-        else if (Input.IsKeyPressed(Key.Right) && Input.IsKeyPressed(Key.Up))
-        {
-            direction.X += 0.7f;
-            direction.Z -= 0.7f;
-            return;
-        }
-        if (Input.IsKeyPressed(Key.Left) && Input.IsKeyPressed(Key.Down))
-        {
-            direction.X -= 0.7f;
-            direction.Z += 0.7f;
-            return;
-        }
-        else if (Input.IsKeyPressed(Key.Right) && Input.IsKeyPressed(Key.Down))
-        {
-            direction.X += 0.7f;
-            direction.Z += 0.7f;
-            return;
-        }
-
-        if (Input.IsKeyPressed(Key.Left))
-        {
-            direction.X -= 1.0f;
-            return;
-        }
-        else if (Input.IsKeyPressed(Key.Right))
-        {
-            direction.X += 1.0f;
-            return;
-        }
-        if (Input.IsKeyPressed(Key.Up))
-        {
-            direction.Z -= 1.0f;
-            return;
-        }
-        else if (Input.IsKeyPressed(Key.Down))
-        {
-            direction.Z += 1.0f;
-            return;
-        }
     }
 
     public PlayerTennis GameplayTennisModelBuilder(GameplayTennisModel gameplayTennisModel)

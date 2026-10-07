@@ -32,6 +32,10 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
         public string P1LeftName { get; set; } = "../P1Left";
         public string P1RightName { get; set; } = "../P1Right";
 
+        public string P2CenterName { get; set; } = "../P2Center";
+        public string P2LeftName { get; set; } = "../P2Left";
+        public string P2RightName { get; set; } = "../P2Right";
+
 
         public string ballPathName { get; set; } = "res://Prototype/Tennis/tennis_ball.tscn";
 
@@ -57,11 +61,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
         public Node3D servePlayerRightMin2;
 
 
+        public List<Node3D> P1FrontList = new List<Node3D>();
         public List<Node3D> P1CenterList = new List<Node3D>();
-        public List<Node3D> P1LeftList = new List<Node3D>();
-        public List<Node3D> P1RightList = new List<Node3D>();
+        public List<Node3D> P1BackList = new List<Node3D>();
+        
+        public List<List<Node3D>> P1BallPlaceList = new List<List<Node3D>>();
 
-        public List<Node3D> P1BallPlaceList = new List<Node3D>();
+        public List<Node3D> P2BallPlaceList = new List<Node3D>();
 
         public string servePlayerRightP1Name { get; set; } = "../ServePlayerRightP1";
         public Node3D servePlayerRightP1 = null;
@@ -76,6 +82,24 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
         public Node3D servePlayerLeftP2 = null;
         public string servePlayerLeftP3Name { get; set; } = "../ServePlayerLeftP3";
         public Node3D servePlayerLeftP3 = null;
+
+
+
+
+        public string servePlayerRightP1_1Name { get; set; } = "../ServePlayerRightP1_1";
+        public Node3D servePlayerRightP1_1 = null;
+        public string servePlayerRightP2_1Name { get; set; } = "../ServePlayerRightP2_1";
+        public Node3D servePlayerRightP2_1 = null;
+        public string servePlayerRightP3_1Name { get; set; } = "../ServePlayerRightP3_1";
+        public Node3D servePlayerRightP3_1 = null;
+
+        public string servePlayerLeftP1_1Name { get; set; } = "../ServePlayerLeftP1_1";
+        public Node3D servePlayerLeftP1_1 = null;
+        public string servePlayerLeftP2_1Name { get; set; } = "../ServePlayerLeftP2_1";
+        public Node3D servePlayerLeftP2_1 = null;
+        public string servePlayerLeftP3_1Name { get; set; } = "../ServePlayerLeftP3_1";
+        public Node3D servePlayerLeftP3_1 = null;
+
 
 
         public float height = 0.0130f;
@@ -97,5 +121,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
         public bool isServeLeft = true;
 
         public Vector3 backHandPosition = Vector3.Zero;
+
+        public bool isServeP1 = true;
     }
 }

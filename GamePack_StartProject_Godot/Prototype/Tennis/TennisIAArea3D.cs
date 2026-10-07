@@ -21,14 +21,21 @@ public partial class TennisIAArea3D : Area3D
             if (body.Name.ToString().Contains("ball", StringComparison.OrdinalIgnoreCase))
             {
                 ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).theBallWasHit = true;
-                ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP1;
+                if(((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
+                    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP1;//<- PAREI AQUI
+
+                var positionBackHand = player_IA_tennis_prototype.DefineBackhandPosition();
+                var positionBackHandFinal = GamePackStartProjectGodot.Prototype.Tennis.Range.GetRangeValue(positionBackHand, player_IA_tennis_prototype.ranges);
+
+                var listPlayerPositionUnordered = ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.P1BallPlaceList[(int)positionBackHandFinal];
 
                 var listPlayerPosition =
-                    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.P1BallPlaceList
-                    .OrderByDescending(node => 
+                    listPlayerPositionUnordered
+                    .OrderByDescending(node =>
                     node.GlobalPosition.DistanceTo(((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.player.GlobalPosition)).ToList();
 
-                ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.backHandPosition = listPlayerPosition[0].GlobalPosition;
+                if (((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
+                    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.backHandPosition = listPlayerPosition[0].GlobalPosition;
             }
         }
     }

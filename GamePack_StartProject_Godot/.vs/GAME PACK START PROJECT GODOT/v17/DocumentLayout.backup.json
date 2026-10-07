@@ -1,41 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\",
+  "WorkspaceRootPath": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\facade\\mainmenufacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\facade\\mainmenufacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\playertennisai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\playertennisai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\util\\saveload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\util\\saveload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisiaarea3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisiaarea3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\igor8\\AppData\\Local\\Temp\\.vsdbgsrc\\4d3d83a15e5ff1981082374f61fffdd73ed40c541fae022cd9c09d62ba279e77\\CSharpInstanceBridge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\decorator\\mainmenubuttondecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\decorator\\mainmenubuttondecorator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisarea3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisarea3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\decorator\\configbuttoncomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\decorator\\configbuttoncomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\gameplaytennismodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\gameplaytennismodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\facade\\splashfacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\facade\\splashfacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\playertennismodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\playertennismodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\model\\mainbuttonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\model\\mainbuttonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\playertennis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\playertennis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\observer\\mainmenuobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\observer\\mainmenuobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisplayermovestrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisplayermovestrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\gamepack_startproject_godot\\scripts\\singleton\\configsingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:scripts\\singleton\\configsingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisprototypefacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisprototypefacade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisprototypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisprototypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\trajectorypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\trajectorypoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\range.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|d:\\igor\\igor\\igorayelloborges\\projetos\\godotprototype\\gamepack_startproject_godot\\prototype\\tennis\\tennisprototypeview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0034B04-5058-4ABD-9550-EB297BB43672}|Game Pack Start Project Godot.csproj|solutionrelative:prototype\\tennis\\tennisprototypeview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,125 +62,180 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainMenuFacade.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Facade\\MainMenuFacade.cs",
-              "RelativeDocumentMoniker": "Scripts\\Facade\\MainMenuFacade.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Facade\\MainMenuFacade.cs",
-              "RelativeToolTip": "Scripts\\Facade\\MainMenuFacade.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAtwIcAAABSAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "TennisPrototypeView.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPrototypeView.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisPrototypeView.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPrototypeView.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisPrototypeView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-11T01:23:04.966Z",
+              "WhenOpened": "2026-07-01T01:14:56.769Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TennisPrototypeController.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPrototypeController.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisPrototypeController.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPrototypeController.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisPrototypeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T01:20:22.126Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TennisPrototypeFacade.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPrototypeFacade.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisPrototypeFacade.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPrototypeFacade.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisPrototypeFacade.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAEwFEAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T01:35:58.063Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameplayTennisModel.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\GameplayTennisModel.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\GameplayTennisModel.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\GameplayTennisModel.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\GameplayTennisModel.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAvwHMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T01:39:19.554Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "MainButtonModel.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Model\\MainButtonModel.cs",
-              "RelativeDocumentMoniker": "Scripts\\Model\\MainButtonModel.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Model\\MainButtonModel.cs",
-              "RelativeToolTip": "Scripts\\Model\\MainButtonModel.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAA2wFQAAAAyAAAA",
+              "Title": "PlayerTennis.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\PlayerTennis.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\PlayerTennis.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\PlayerTennis.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\PlayerTennis.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAvwDEAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-11T01:23:04.967Z",
+              "WhenOpened": "2026-07-02T00:51:47.834Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ConfigSingleton.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Singleton\\ConfigSingleton.cs",
-              "RelativeDocumentMoniker": "Scripts\\Singleton\\ConfigSingleton.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Singleton\\ConfigSingleton.cs",
-              "RelativeToolTip": "Scripts\\Singleton\\ConfigSingleton.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAdAAAA",
+              "DocumentIndex": 0,
+              "Title": "PlayerTennisAI.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\PlayerTennisAI.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\PlayerTennisAI.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\PlayerTennisAI.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\PlayerTennisAI.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAWwEsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-11T01:23:04.971Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ConfigButtonComponent.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Decorator\\ConfigButtonComponent.cs",
-              "RelativeDocumentMoniker": "Scripts\\Decorator\\ConfigButtonComponent.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Decorator\\ConfigButtonComponent.cs",
-              "RelativeToolTip": "Scripts\\Decorator\\ConfigButtonComponent.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAawIYAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-11T01:23:04.967Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainMenuButtonDecorator.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Decorator\\MainMenuButtonDecorator.cs",
-              "RelativeDocumentMoniker": "Scripts\\Decorator\\MainMenuButtonDecorator.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Decorator\\MainMenuButtonDecorator.cs",
-              "RelativeToolTip": "Scripts\\Decorator\\MainMenuButtonDecorator.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAcwCkAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T01:39:32.97Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainMenuObserver.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Observer\\MainMenuObserver.cs",
-              "RelativeDocumentMoniker": "Scripts\\Observer\\MainMenuObserver.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Observer\\MainMenuObserver.cs",
-              "RelativeToolTip": "Scripts\\Observer\\MainMenuObserver.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAqwBkAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T01:44:07.174Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SaveLoad.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Util\\SaveLoad.cs",
-              "RelativeDocumentMoniker": "Scripts\\Util\\SaveLoad.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Util\\SaveLoad.cs",
-              "RelativeToolTip": "Scripts\\Util\\SaveLoad.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAEwDwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T21:36:06.265Z",
+              "WhenOpened": "2026-07-16T01:11:44.111Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CSharpInstanceBridge.cs",
-              "DocumentMoniker": "C:\\Users\\igor8\\AppData\\Local\\Temp\\.vsdbgsrc\\4d3d83a15e5ff1981082374f61fffdd73ed40c541fae022cd9c09d62ba279e77\\CSharpInstanceBridge.cs",
-              "ToolTip": "C:\\Users\\igor8\\AppData\\Local\\Temp\\.vsdbgsrc\\4d3d83a15e5ff1981082374f61fffdd73ed40c541fae022cd9c09d62ba279e77\\CSharpInstanceBridge.cs [Read Only]",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAcwB0AAAACAAAAAQAAAA==",
+              "Title": "TennisBall.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisBall.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisBall.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisBall.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisBall.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAswNAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-28T00:47:51.13Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2026-06-28T20:53:04.261Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SplashFacade.cs",
-              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Facade\\SplashFacade.cs",
-              "RelativeDocumentMoniker": "Scripts\\Facade\\SplashFacade.cs",
-              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GamePack_StartProject_Godot\\Scripts\\Facade\\SplashFacade.cs",
-              "RelativeToolTip": "Scripts\\Facade\\SplashFacade.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAASwA0AAAAdAAAA",
+              "Title": "PlayerTennisModel.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\PlayerTennisModel.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\PlayerTennisModel.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\PlayerTennisModel.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\PlayerTennisModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T03:00:12.819Z"
+              "WhenOpened": "2026-07-04T01:05:00.678Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TennisPlayerMoveStrategy.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPlayerMoveStrategy.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisPlayerMoveStrategy.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisPlayerMoveStrategy.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisPlayerMoveStrategy.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAwEcAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T01:56:20.14Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TennisIAArea3D.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisIAArea3D.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisIAArea3D.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisIAArea3D.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisIAArea3D.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAEwCkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-17T00:17:55.477Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TennisArea3D.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisArea3D.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TennisArea3D.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TennisArea3D.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TennisArea3D.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAADwvyIAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-28T22:37:23.311Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Range.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\Range.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\Range.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\Range.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\Range.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-18T23:14:22.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TrajectoryPoint.cs",
+              "DocumentMoniker": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TrajectoryPoint.cs",
+              "RelativeDocumentMoniker": "Prototype\\Tennis\\TrajectoryPoint.cs",
+              "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis\\TrajectoryPoint.cs",
+              "RelativeToolTip": "Prototype\\Tennis\\TrajectoryPoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-15T01:37:55.215Z"
             }
           ]
         }

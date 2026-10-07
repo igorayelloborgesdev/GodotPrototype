@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Game Pack Start Project Godot"
-run/main_scene="res://Scenes/SplashScene.tscn"
+config/name="Godot Prototypes"
+run/main_scene="uid://da8ajl2rairlh"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
