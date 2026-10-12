@@ -22,7 +22,7 @@ public partial class TennisIAArea3D : Area3D
             {
                 ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).theBallWasHit = true;
                 if(((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
-                    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP1;//<- PAREI AQUI
+                    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP1;
 
                 var positionBackHand = player_IA_tennis_prototype.DefineBackhandPosition();
                 var positionBackHandFinal = GamePackStartProjectGodot.Prototype.Tennis.Range.GetRangeValue(positionBackHand, player_IA_tennis_prototype.ranges);

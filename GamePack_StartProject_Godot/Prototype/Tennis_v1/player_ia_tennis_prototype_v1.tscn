@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bygqo2rgw1mks"]
+
+[ext_resource type="Script" uid="uid://bmcy6lyojnx5e" path="res://Prototype/Tennis_v1/PlayerTennisAI_v1.cs" id="1_vhj0l"]
+[ext_resource type="Script" uid="uid://c3p7l33scfhs7" path="res://Prototype/Tennis_v1/TennisIAArea3D_V1.cs" id="2_r5l4o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_puyhs"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hp2xh"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_garym"]
+size = Vector3(1, 0.104492, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dg6qf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_q4wer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dccmf"]
+
+[node name="player_IA_tennis_prototype" type="CharacterBody3D"]
+script = ExtResource("1_vhj0l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 0, 2.34173, 0)
+mesh = SubResource("BoxMesh_puyhs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hp2xh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 0, 0.102958, 0)
+shape = SubResource("BoxShape3D_garym")
+
+[node name="ServeBallRef" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.81848, 0)
+
+[node name="ServeBallGoodMinRef" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65546, 0)
+mesh = SubResource("PlaneMesh_dg6qf")
+
+[node name="ServeBallGoodMaxRef" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.89569, 0)
+mesh = SubResource("PlaneMesh_dg6qf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 5.5, 0, 0, 0, 3.5, 0, 2.59812, 0)
+visible = false
+mesh = SubResource("BoxMesh_q4wer")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D2"]
+script = ExtResource("2_r5l4o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D"]
+shape = SubResource("BoxShape3D_dccmf")
