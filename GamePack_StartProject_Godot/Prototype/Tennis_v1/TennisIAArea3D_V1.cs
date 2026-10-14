@@ -24,8 +24,10 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (body is CharacterBody3D ball)
             {
                 if (body.Name.ToString().Contains("ball", StringComparison.OrdinalIgnoreCase))
-                {
+                {                    
                     ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).theBallWasHit = true;
+                    if (((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
+                        ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP1;
                     //if (((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
                     //    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP1;
 

@@ -134,16 +134,16 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     new Vector3(servePlayerRight2.Position.X, height, servePlayerRight2.Position.Z) :
                     new Vector3(servePlayerLeft2.Position.X, height, servePlayerLeft2.Position.Z);
 
-                //if (gameplayModel.isServeP1)
-                //{
-                //    (gameplayModel.player as PlayerTennis).Reset();
-                //    (gameplayModel.ball as TennisBall).Reset();
-                //}
-                //else
-                //{
-                //    (gameplayModel.playerAI as PlayerTennisAI).Reset();
-                //    (gameplayModel.ball as TennisBall).ResetServeP2();
-                //}
+                if (isServeP1)
+                {
+                    (player as PlayerTennis_v1).Reset();
+                    (ball as TennisBall_v1).Reset(1);
+                }
+                else
+                {
+                    (playerAI as PlayerTennisAI_v1).Reset();
+                    (ball as TennisBall_v1).Reset(2);
+                }
                 isReset = false;
             }
         }

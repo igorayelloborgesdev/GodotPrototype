@@ -38,5 +38,12 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             Right = 7,
             RightUp = 8
         }
+
+        public ServeEnumWait serveEnumWait = ServeEnumWait.Init;
+        public enum ServeEnumWait
+        {
+            Init = 0,
+            Act = 1
+        }
     }
 }

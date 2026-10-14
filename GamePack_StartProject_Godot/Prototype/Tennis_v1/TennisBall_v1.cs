@@ -27,8 +27,8 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         private const float Friction = 0.98f;
         private const float FrictionXZ = 1.0f;
         private const float alturaMaximaDesejada = 10.0f;
-        private const float bestHitPointMin = 3.0f;
-        private const float bestHitPointMax = 3.5f;
+        private const float bestHitPointMin = 5.0f;
+        private const float bestHitPointMax = 6.5f;
 
         private List<TrajectoryPoint> trajectoryPoint = new();
         public Vector3 bestHitPosition { get; set; }
@@ -69,10 +69,12 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (Input.IsKeyPressed(Key.Key1))
             {
                 gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.ServeP1;
+                gameplayTennisModel.isServeP1 = true;
             }
             if (Input.IsKeyPressed(Key.Key2))
             {
                 gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.ServeP2;
+                gameplayTennisModel.isServeP1 = false;
             }
             if (Input.IsKeyPressed(Key.Q))
             {                
@@ -83,6 +85,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (Input.IsKeyPressed(Key.W))
             {                
                 this.gameplayTennisModel.isServeLeft = false;
+                this.gameplayTennisModel.isReset = true;
+                this.gameplayTennisModel.Reset();
+            }
+            if (Input.IsKeyPressed(Key.R))
+            {
                 this.gameplayTennisModel.isReset = true;
                 this.gameplayTennisModel.Reset();
             }
@@ -114,50 +121,66 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     ThrowBallFunction(delta);
                 }
                 else if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.HitBall)
-                {
-                    GD.Print("C");
+                {                    
                     gameplayTennisModel.gameEnum = gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 ?
                         GameplayTennisModel_v1.GameEnum.InGameP2 : GameplayTennisModel_v1.GameEnum.InGameP1;
 
-                    gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel_v1.ServeEnum.InGame;                    
+                    gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel_v1.ServeEnum.InGame;                                    
                 }
             }
             else if ((gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1 || gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2) 
                 && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.InGame)
             {
-                BallBounce();                
+                BallBounce(delta);                
             }
 
         }
 
-        private void BallBounce()
+        private void BallBounce(double delta)
         {
-            if (theBallWasHit)
-            {
-                
-                GD.Print(gameplayTennisModel.gameEnum);
-                GD.Print(gameplayTennisModel.playerTennisModel.serveEnum);
-                GD.Print(gameplayTennisModel.backHandPosition);
 
+            if (gameplayTennisModel.playerTennisModel.serveEnumWait == PlayerTennisModel_v1.ServeEnumWait.Init && (GlobalPosition.Z < 1.5f && GlobalPosition.Z > -1.5f))
+            {
+                gameplayTennisModel.playerTennisModel.serveEnumWait = PlayerTennisModel_v1.ServeEnumWait.Act;                
+            }
+
+            if (theBallWasHit)
+            {                
                 theBallWasHit = false;
-                var backHandPlayer = gameplayTennisModel.backHandPosition;//<-
+                var backHandPlayer = gameplayTennisModel.backHandPosition;
                 CalcularVelocidadesParaAlvo(backHandPlayer.X, backHandPlayer.Z, alturaMaximaDesejada);
                 trajectoryPoint = PredictTrajectory();
 
-                TrajectoryPoint hit = GetBestHitPoint(bestHitPointMin, bestHitPointMax);
+                TrajectoryPoint hit = GetBestHitPoint(bestHitPointMin, bestHitPointMax, gameplayTennisModel.gameEnum);
 
-                if (hit != null)
-                {
-                    bestHitPosition = hit.Position;
-                }
-                GD.Print("impact");
                 var count = 0;
                 foreach (Vector3 impact in PredictBounces(2))
                 {
                     impactBoxes[count].GlobalPosition = impact;
                     count++;
-                    GD.Print(impact);
                 }
+
+                if (hit != null)
+                {
+                    bestHitPosition = hit.Position == Vector3.Zero ? impactBoxes[0].GlobalPosition : hit.Position;
+                }                
+                
+            }
+
+            velocity.Y += Gravity * (float)delta;
+            velocity.X *= FrictionXZ;
+            velocity.Z *= FrictionXZ;
+            Velocity = velocity;
+            MoveAndSlide();
+            if (IsOnFloor())
+            {
+                velocity.Y = -velocity.Y * BounceFactor;
+
+                velocity.X *= Friction;
+                velocity.Z *= Friction;
+
+                if (velocity.Length() < 0.1f * SpeedMultiplier)
+                    velocity = Vector3.Zero;
             }
         }
 
@@ -228,20 +251,34 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
             return impacts;
         }
-        private TrajectoryPoint GetBestHitPoint(float minHeight, float maxHeight)
+        private TrajectoryPoint GetBestHitPoint(float minHeight, float maxHeight, GameplayTennisModel_v1.GameEnum gameEnum)
         {
             foreach (var p in trajectoryPoint)
             {
-                if (p.Velocity.Y > 0 &&
-                    p.Position.Y >= minHeight &&
-                    p.Position.Y <= maxHeight &&
-                    p.Position.Z < 0)
+                if (gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
                 {
-                    return p;
+                    if (p.Velocity.Y > 0 &&
+                        p.Position.Y >= minHeight &&
+                        p.Position.Y <= maxHeight &&
+                        p.Position.Z < 0)
+                    {
+                        return p;
+                    }
                 }
+                else
+                {
+                    if (p.Velocity.Y > 0 &&
+                        p.Position.Y >= minHeight &&
+                        p.Position.Y <= maxHeight &&
+                        p.Position.Z > 0)
+                    {
+                        return p;
+                    }
+                }
+                
             }
 
-            return trajectoryPoint[trajectoryPoint.Count - 1];
+            return new TrajectoryPoint();
         }
         public List<TrajectoryPoint> PredictTrajectory(float simulationTime = 5f)
         {
@@ -446,6 +483,19 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         {
             this.gameplayTennisModel.boxScene = GD.Load<PackedScene>(this.gameplayTennisModel.boxScene_Name);
             return this;
+        }
+
+
+        public void Reset(int playerID)
+        {
+            Gravity = 0.0f;
+            velocity = Vector3.Zero;
+            SpeedMultiplier = 1.0f;
+            tossStarted = false;
+            ballDirectionEnum = BallDirectionEnum.neutral;
+            gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)playerID;
+            ballDirectionEnum = BallDirectionEnum.neutral;
+            theBallWasHit = false;
         }
 
     }

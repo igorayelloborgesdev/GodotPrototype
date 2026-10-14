@@ -136,7 +136,7 @@ public partial class TennisBall : CharacterBody3D
                 RemoveImpactBoxes();
                 RemoveBoxAI();
 
-                var backHandPlayer = gameplayTennisModel.backHandPosition;//<-
+                var backHandPlayer = gameplayTennisModel.backHandPosition;
                 CalcularVelocidadesParaAlvo(backHandPlayer.X, backHandPlayer.Z, alturaMaximaDesejada);
                 trajectoryPoint = PredictTrajectory();
 
