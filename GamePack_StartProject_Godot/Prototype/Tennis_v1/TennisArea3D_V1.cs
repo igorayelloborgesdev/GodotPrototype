@@ -27,19 +27,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 {                    
                     ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).theBallWasHit = true;
                     if (((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1)
-                        ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP2;
-                    //if (((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum == GameplayTennisModel.GameEnum.InGameP1)
-                    //{
-
-                        //    ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall).theBallWasHit = true;
-                        //    ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP2;
-
-                        //    player_tennis_prototype.gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel.ServeEnum.HitBall;
-
-                        //    ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.backHandPosition =
-                        //    player_tennis_prototype.gameplayTennisModel.P2BallPlaceList[
-                        //        (int)player_tennis_prototype.gameplayTennisModel.playerTennisModel.backForeHandDirectionEnum].GlobalPosition;
-                        //}
+                        ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP2;                    
                 }
             }
         }

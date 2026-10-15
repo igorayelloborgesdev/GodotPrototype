@@ -27,22 +27,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 {                    
                     ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).theBallWasHit = true;
                     if (((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
-                        ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP1;
-                    //if (((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
-                    //    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.gameEnum = GameplayTennisModel.GameEnum.InGameP1;
-
-                    //var positionBackHand = player_IA_tennis_prototype.DefineBackhandPosition();
-                    //var positionBackHandFinal = GamePackStartProjectGodot.Prototype.Tennis.Range.GetRangeValue(positionBackHand, player_IA_tennis_prototype.ranges);
-
-                    //var listPlayerPositionUnordered = ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.P1BallPlaceList[(int)positionBackHandFinal];
-
-                    //var listPlayerPosition =
-                    //    listPlayerPositionUnordered
-                    //    .OrderByDescending(node =>
-                    //    node.GlobalPosition.DistanceTo(((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.player.GlobalPosition)).ToList();
-
-                    //if (((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel.ServeEnum.InGame)
-                    //    ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall).gameplayTennisModel.backHandPosition = listPlayerPosition[0].GlobalPosition;
+                        ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP1;                    
                 }
             }
         }

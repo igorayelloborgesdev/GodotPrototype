@@ -10,8 +10,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 {
     public partial class TennisBall_v1 : CharacterBody3D
     {
-        public GameplayTennisModel_v1 gameplayTennisModel = null;
-        private float SpeedMultiplier = 1.0f;
+
 
         //Quadra de saibro: Bounce = 0.95f
         //Quadra dura: Bounce = 0.80f
@@ -22,8 +21,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         //Quadra de grama: Speed= 1.5f
         //Quadra de sintetico (carpet): Speed = 1.75f    
 
-        private float BaseGravity = -9.8f;
-        private const float BounceFactor = 0.95f;
+        public GameplayTennisModel_v1 gameplayTennisModel = null;
+        private float SpeedMultiplier = 2.0f;
+        private const float BounceFactor = 1.00f;
+
+        private float BaseGravity = -9.8f;        
         private const float Friction = 0.98f;
         private const float FrictionXZ = 1.0f;
         private const float alturaMaximaDesejada = 10.0f;
@@ -110,7 +112,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     {
                         ballDirectionEnum = BallDirectionEnum.up;
                         tossStarted = true;
-                        SpeedMultiplier = 1.75f;
+                        SpeedMultiplier = 2.0f;
                         Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
                         Vector3 pos = GlobalPosition;
                         float alvoX = pos.X;
@@ -490,7 +492,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         {
             Gravity = 0.0f;
             velocity = Vector3.Zero;
-            SpeedMultiplier = 1.0f;
+            SpeedMultiplier = 2.0f;
             tossStarted = false;
             ballDirectionEnum = BallDirectionEnum.neutral;
             gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)playerID;

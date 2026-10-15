@@ -13,7 +13,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public GameplayTennisModel_v1 gameplayTennisModel = null;
         public Node3D serveBallRef = null;
         public string serveBallRefName { get; set; } = "ServeBallRef";
-        public float Speed = 18.0f;        
+        public float Speed = 18.0f;
+
+        public double speedServe = 0.0;
+        public double speedBackHand = 0.0;
+
         public Context contextMove;        
         public Node3D ServeBallGoodMinRef = null;
         public string ServeBallGoodMinRefName { get; set; } = "ServeBallGoodMinRef";
@@ -78,17 +82,29 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 || gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1
                 ))
             {                
-                gameplayTennisModel.backHandPosition = GetServePosition().GlobalPosition;                
+                gameplayTennisModel.backHandPosition = GetServePosition().GlobalPosition;
+                speedServe = DefineServeStartTime();
+                speedBackHand = DefineServeStartTime();
             }
             if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1)
             {                
-                MoveTo((gameplayTennisModel.ball as TennisBall_v1).bestHitPosition);
+                if (speedServe > 0.0)
+                {                    
+                    DefineServePlayerAIMove(delta);
+                }
+                else
+                {
+                    MoveTo((gameplayTennisModel.ball as TennisBall_v1).bestHitPosition);
+                }
             }
             else if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
-            {                
+            {
+                
                 if ((gameplayTennisModel.ball as TennisBall_v1).theBallWasHit 
                     && gameplayTennisModel.playerTennisModel.serveEnumWait == PlayerTennisModel_v1.ServeEnumWait.Act)
-                {
+                {                    
+                    speedServe = DefineServeStartTime();
+                    speedBackHand = DefineServeStartTime();
 
                     var positionBackHand = DefineBackhandPosition();
                     var positionBackHandFinal = GamePackStartProjectGodot.Prototype.Tennis.Range.GetRangeValue(positionBackHand, ranges);
@@ -120,8 +136,33 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                                  node.GlobalPosition.DistanceTo(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.player.GlobalPosition)).ToList();
                     ((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.backHandPosition = listPlayerPosition[0].GlobalPosition;
                 }
+                else
+                {
+                    if (speedBackHand > 0.0)
+                    {                        
+                        DefineBackHandPlayerAIMove(delta);
+                    }
+                    else
+                    {
+                        MoveTo(new Vector3(gameplayTennisModel.P2BallPlaceList[1].GlobalPosition.X, this.GlobalPosition.Y, this.GlobalPosition.Z));
+                    }                    
+                }
             }
         }
+        private float DefineServeStartTime()
+        {
+            rng.Randomize();
+            return rng.RandfRange(0.0f, 0.75f);
+        }
+        private void DefineServePlayerAIMove(double delta)
+        {
+            speedServe -= delta;
+        }
+        private void DefineBackHandPlayerAIMove(double delta)
+        {
+            speedBackHand -= delta;
+        }
+
         private void MoveTo(Vector3 target)
         {
             target.Y = GlobalPosition.Y;
