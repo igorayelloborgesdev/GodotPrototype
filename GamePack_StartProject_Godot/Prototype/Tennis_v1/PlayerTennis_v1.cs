@@ -2,6 +2,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public string serveBallRefName { get; set; } = "ServeBallRef";
         public float Speed = 18.0f;
 
+        //public double speedServe = 0.0;
         public double speedServe = 0.0;
         public double speedBackHand = 0.0;
 
-        public Context contextMove;        
+        public Context_v1 contextMove;        
         public Node3D ServeBallGoodMinRef = null;
         public string ServeBallGoodMinRefName { get; set; } = "ServeBallGoodMinRef";
         public Node3D ServeBallGoodMaxRef = null;
@@ -77,17 +79,26 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (this.gameplayTennisModel is null)
                 return;
 
+            contextMove = new Context_v1(DefineTennisPlayerMoveStrategy());
+            contextMove.ContextInterface();
+
+            this.gameplayTennisModel.playerTennisModel.direction = this.gameplayTennisModel.playerTennisModel.direction.Normalized();
+            Velocity = this.gameplayTennisModel.playerTennisModel.direction * Speed;            
+
             if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.HitBall && 
                 (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 
                 || gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1
                 ))
             {                
-                gameplayTennisModel.backHandPosition = GetServePosition().GlobalPosition;
-                speedServe = DefineServeStartTime();
-                speedBackHand = DefineServeStartTime();
+                gameplayTennisModel.backHandPosition = GetServePosition(this.gameplayTennisModel.playerTennisModel).GlobalPosition;
+                //gameplayTennisModel.backHandPosition = GetServePosition().GlobalPosition;
+                //speedServe = DefineServeStartTime();
+                //speedBackHand = DefineServeStartTime();
+
             }
             if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1)
-            {                
+            {
+                //<- PAREI AQUI
                 if (speedServe > 0.0)
                 {                    
                     DefineServePlayerAIMove(delta);
@@ -148,6 +159,51 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     }                    
                 }
             }
+
+            if (!((gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.ThrowBall) &&
+                gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1))
+                MoveAndSlide();
+        }
+
+        private Node3D GetServePosition(PlayerTennisModel_v1 playerTennisModel)
+        {
+            if (gameplayTennisModel.isServeLeft)
+            {
+                if (playerTennisModel.serveDirectionEnum == PlayerTennisModel_v1.ServeDirectionEnum.Left)
+                    return gameplayTennisModel.servePlayerRightP1;
+                else if (playerTennisModel.serveDirectionEnum == PlayerTennisModel_v1.ServeDirectionEnum.Right)
+                    return gameplayTennisModel.servePlayerRightP3;
+                return gameplayTennisModel.servePlayerRightP2;
+            }
+            else
+            {
+                if (playerTennisModel.serveDirectionEnum == PlayerTennisModel_v1.ServeDirectionEnum.Left)
+                    return gameplayTennisModel.servePlayerLeftP3;
+                else if (playerTennisModel.serveDirectionEnum == PlayerTennisModel_v1.ServeDirectionEnum.Right)
+                    return gameplayTennisModel.servePlayerLeftP1;
+                return gameplayTennisModel.servePlayerLeftP2;
+            }
+
+        }
+
+        private TennisPlayerMoveStrategy_V1 DefineTennisPlayerMoveStrategy()
+        {
+            if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand)
+            {
+                return new ConcreteStrategyMoveServe_V1().GameplayTennisModelBuilder(gameplayTennisModel);
+            }
+            if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 &&
+                (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.ThrowBall ||
+                gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.HitBall))
+            {
+                return new ConcreteStrategyServeDirection_V1().GameplayTennisModelBuilder(gameplayTennisModel);
+            }
+            if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP2)
+            {
+                return new ConcreteStrategyServeReceive_V1().GameplayTennisModelBuilder(gameplayTennisModel);
+            }
+
+            return new ConcreteStrategyMove_V1().GameplayTennisModelBuilder(gameplayTennisModel);
         }
         private float DefineServeStartTime()
         {

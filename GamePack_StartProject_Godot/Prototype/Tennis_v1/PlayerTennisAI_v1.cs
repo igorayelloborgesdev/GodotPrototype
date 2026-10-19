@@ -17,8 +17,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public double speedServe = 0.0;
         public double speedBackHand = 0.0;
-
-        public Context contextMove;
+        
         public Node3D ServeBallGoodMinRef = null;
         public string ServeBallGoodMinRefName { get; set; } = "ServeBallGoodMinRef";
         public Node3D ServeBallGoodMaxRef = null;

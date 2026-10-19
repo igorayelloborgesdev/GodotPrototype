@@ -37,11 +37,11 @@ shape = SubResource("BoxShape3D_yvalg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.81848, 0)
 
 [node name="ServeBallGoodMinRef" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65546, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26221, 0)
 mesh = SubResource("PlaneMesh_a53wd")
 
 [node name="ServeBallGoodMaxRef" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.89569, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4107, 0)
 mesh = SubResource("PlaneMesh_a53wd")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
