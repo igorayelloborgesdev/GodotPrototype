@@ -21,9 +21,14 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         //Quadra de grama: Speed= 1.5f
         //Quadra de sintetico (carpet): Speed = 1.75f    
 
+        //Quadra de saibro: Speed = 1.5f
+        //Quadra dura: Speed = 1.65f
+        //Quadra de grama: Speed= 1.8f
+        //Quadra de sintetico (carpet): Speed = 1.95f    
+
         public GameplayTennisModel_v1 gameplayTennisModel = null;
-        private float SpeedMultiplier = 2.0f;
-        private const float BounceFactor = 1.00f;
+        private float SpeedMultiplier = 1.5f;
+        private const float BounceFactor = 0.95f;
 
         private float BaseGravity = -9.8f;        
         private const float Friction = 0.98f;
@@ -63,20 +68,27 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 return;
             BallStates(delta);
 
+
             //TESTE input
-            if (Input.IsKeyPressed(Key.A) && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand)
-            {            
+            if (Input.IsKeyPressed(Key.A) && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand 
+                && gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1)
+            {
                 gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel_v1.ServeEnum.ThrowBall;
             }
             if (Input.IsKeyPressed(Key.Key1))
             {
                 gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.ServeP1;
                 gameplayTennisModel.isServeP1 = true;
+                this.gameplayTennisModel.isReset = true;
+                this.gameplayTennisModel.Reset();
             }
             if (Input.IsKeyPressed(Key.Key2))
             {
                 gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.ServeP2;
                 gameplayTennisModel.isServeP1 = false;
+                //(this.gameplayTennisModel.playerAI as PlayerTennisAI_v1).speedServeStand = (this.gameplayTennisModel.playerAI as PlayerTennisAI_v1).DefineServeStartTime();
+                this.gameplayTennisModel.isReset = true;
+                this.gameplayTennisModel.Reset();
             }
             if (Input.IsKeyPressed(Key.Q))
             {                
@@ -112,7 +124,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     {
                         ballDirectionEnum = BallDirectionEnum.up;
                         tossStarted = true;
-                        SpeedMultiplier = 2.0f;
+                        //SpeedMultiplier = 2.0f;
                         Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
                         Vector3 pos = GlobalPosition;
                         float alvoX = pos.X;
@@ -492,7 +504,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         {
             Gravity = 0.0f;
             velocity = Vector3.Zero;
-            SpeedMultiplier = 2.0f;
+            //SpeedMultiplier = 2.0f;
             tossStarted = false;
             ballDirectionEnum = BallDirectionEnum.neutral;
             gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)playerID;

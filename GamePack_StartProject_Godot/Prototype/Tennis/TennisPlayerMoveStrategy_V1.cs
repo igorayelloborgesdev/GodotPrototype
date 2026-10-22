@@ -80,9 +80,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
 
         }
         public override void ActionPlayerAlgorithmInterface()
-        {
+        {            
             if (Input.IsKeyPressed(Key.A))
-            {
+            {                
                 this.gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel_v1.ServeEnum.ThrowBall;
                 return;
             }
@@ -193,6 +193,10 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
                     return;
                 }
                 return;
+            }
+            else
+            {
+                this.gameplayTennisModel.playerTennisModel.backForeHandDirectionEnum = PlayerTennisModel_v1.BackForeHandDirectionEnum.Center;
             }
 
             if (Input.IsKeyPressed(Key.Left) && Input.IsKeyPressed(Key.Up))

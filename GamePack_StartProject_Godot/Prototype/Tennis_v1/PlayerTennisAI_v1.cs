@@ -17,7 +17,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public double speedServe = 0.0;
         public double speedBackHand = 0.0;
-        
+        public double speedServeStand = 0.75;
+        public double speedServeStandCount = 0.0;
+
         public Node3D ServeBallGoodMinRef = null;
         public string ServeBallGoodMinRefName { get; set; } = "ServeBallGoodMinRef";
         public Node3D ServeBallGoodMaxRef = null;
@@ -43,6 +45,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
             if (this.gameplayTennisModel is null)
                 return;
+
+            if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand && gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP2)
+            {                
+                speedServeStandCount += delta;                
+                if (speedServeStandCount > speedServeStand)
+                    gameplayTennisModel.playerTennisModel.serveEnum = PlayerTennisModel_v1.ServeEnum.ThrowBall;
+            }
 
             if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.HitBall &&
                 (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP2 
@@ -126,7 +135,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             this.gameplayTennisModel = gameplayTennisModel;
             return this;
         }
-        private float DefineServeStartTime()
+        public float DefineServeStartTime()
         {
             rng.Randomize();
             return rng.RandfRange(0.0f, 0.75f);
@@ -172,6 +181,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public void Reset()
         {
+            speedServeStandCount = 0.0;
             gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)2;
             gameplayTennisModel.playerTennisModel.direction = Vector3.Zero;
             gameplayTennisModel.playerTennisModel.serveEnum = (PlayerTennisModel_v1.ServeEnum)0;

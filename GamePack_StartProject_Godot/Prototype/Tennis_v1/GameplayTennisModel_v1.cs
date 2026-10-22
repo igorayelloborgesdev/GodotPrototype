@@ -133,7 +133,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 playerAI.Position = isServeLeft ?
                     new Vector3(servePlayerRight2.Position.X, height, servePlayerRight2.Position.Z) :
                     new Vector3(servePlayerLeft2.Position.X, height, servePlayerLeft2.Position.Z);
-
+                
                 if (isServeP1)
                 {
                     (player as PlayerTennis_v1).Reset();

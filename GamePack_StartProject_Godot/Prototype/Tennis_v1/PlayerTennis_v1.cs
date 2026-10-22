@@ -91,73 +91,18 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 ))
             {                
                 gameplayTennisModel.backHandPosition = GetServePosition(this.gameplayTennisModel.playerTennisModel).GlobalPosition;
-                //gameplayTennisModel.backHandPosition = GetServePosition().GlobalPosition;
-                //speedServe = DefineServeStartTime();
-                //speedBackHand = DefineServeStartTime();
-
+            
             }
-            if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1)
-            {
-                //<- PAREI AQUI
-                if (speedServe > 0.0)
-                {                    
-                    DefineServePlayerAIMove(delta);
-                }
-                else
-                {
-                    MoveTo((gameplayTennisModel.ball as TennisBall_v1).bestHitPosition);
-                }
-            }
-            else if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
+            if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
             {
                 
-                if ((gameplayTennisModel.ball as TennisBall_v1).theBallWasHit 
+                if ((gameplayTennisModel.ball as TennisBall_v1).theBallWasHit
                     && gameplayTennisModel.playerTennisModel.serveEnumWait == PlayerTennisModel_v1.ServeEnumWait.Act)
-                {                    
-                    speedServe = DefineServeStartTime();
-                    speedBackHand = DefineServeStartTime();
-
-                    var positionBackHand = DefineBackhandPosition();
-                    var positionBackHandFinal = GamePackStartProjectGodot.Prototype.Tennis.Range.GetRangeValue(positionBackHand, ranges);
-
-                    var P2BallPlaceList = new List<Node3D>();
-                    if ((int)positionBackHandFinal == 0)
-                    {
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[0]);
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[3]);
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[6]);
-                    }
-                    else if ((int)positionBackHandFinal == 1)
-                    {
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[1]);
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[4]);
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[7]);
-                    }
-                    else if ((int)positionBackHandFinal == 2)
-                    {
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[2]);
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[5]);
-                        P2BallPlaceList.Add(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.P2BallPlaceList[8]);
-                    }
-
-                    var listPlayerPositionUnordered = P2BallPlaceList;
-                    var listPlayerPosition =
-                                 listPlayerPositionUnordered
-                                 .OrderByDescending(node =>
-                                 node.GlobalPosition.DistanceTo(((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.player.GlobalPosition)).ToList();
-                    ((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.backHandPosition = listPlayerPosition[0].GlobalPosition;
-                }
-                else
-                {
-                    if (speedBackHand > 0.0)
-                    {                        
-                        DefineBackHandPlayerAIMove(delta);
-                    }
-                    else
-                    {
-                        MoveTo(new Vector3(gameplayTennisModel.P2BallPlaceList[1].GlobalPosition.X, this.GlobalPosition.Y, this.GlobalPosition.Z));
-                    }                    
-                }
+                {            
+                    ((gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.backHandPosition =
+                        ((gameplayTennisModel.ball) as TennisBall_v1)
+                        .gameplayTennisModel.P2BallPlaceList[(int)this.gameplayTennisModel.playerTennisModel.backForeHandDirectionEnum].GlobalPosition;
+                }                
             }
 
             if (!((gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.ThrowBall) &&
