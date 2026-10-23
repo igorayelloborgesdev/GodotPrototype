@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6uarwjxr38d0"]
+[gd_scene load_steps=11 format=3 uid="uid://c6uarwjxr38d0"]
 
 [ext_resource type="Script" uid="uid://bowidhhldetde" path="res://Prototype/Tennis_v1/TennisPrototypeView_v1.cs" id="1_ctjtq"]
 [ext_resource type="PackedScene" uid="uid://3ibdsi8xrtgv" path="res://Prototype/Tennis/tennis_court.gltf" id="2_bdi8o"]
@@ -17,6 +17,11 @@ data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gh6gn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ctjtq"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bdi8o"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="tennis_prototype_v1_tscn" type="Node3D"]
 script = ExtResource("1_ctjtq")
@@ -272,3 +277,43 @@ mesh = SubResource("BoxMesh_gh6gn")
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -17.6919, 0.072, -27.4481)
 visible = false
 mesh = SubResource("BoxMesh_gh6gn")
+
+[node name="CourtLimit" type="MeshInstance3D" parent="."]
+transform = Transform3D(84.945, 0, 0, 0, 20.932, 0, 0, 0, 1.097, 0, 7.69007, -41.6277)
+visible = false
+mesh = SubResource("BoxMesh_ctjtq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CourtLimit"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CourtLimit/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bdi8o")
+
+[node name="CourtLimit2" type="MeshInstance3D" parent="."]
+transform = Transform3D(84.945, 0, 0, 0, 20.932, 0, 0, 0, 1.097, 0, 7.69007, 43.5103)
+visible = false
+mesh = SubResource("BoxMesh_ctjtq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CourtLimit2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CourtLimit2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bdi8o")
+
+[node name="CourtLimit3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.71306e-06, 0, -1.097, 0, 20.932, 0, 84.945, 0, -4.79514e-08, 42.569, 7.69007, 0.941328)
+visible = false
+mesh = SubResource("BoxMesh_ctjtq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CourtLimit3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CourtLimit3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bdi8o")
+
+[node name="CourtLimit4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.71306e-06, 0, -1.097, 0, 20.932, 0, 84.945, 0, -4.79514e-08, -42.569, 7.69007, 0.941324)
+visible = false
+mesh = SubResource("BoxMesh_ctjtq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CourtLimit4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CourtLimit4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bdi8o")

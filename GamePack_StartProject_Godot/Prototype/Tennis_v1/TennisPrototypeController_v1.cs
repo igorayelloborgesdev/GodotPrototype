@@ -17,7 +17,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             gameplayFacade.Init(control, gameplayModel);
         }
         public void Update(double delta)
-        {
+        {            
             gameplayFacade.Update(delta, gameplayModel);
         }
         public void PhysicsProcess(double delta)

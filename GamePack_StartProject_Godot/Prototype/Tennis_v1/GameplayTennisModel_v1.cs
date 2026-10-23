@@ -120,8 +120,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public bool isServeP1 = true;
 
+        public bool isPlayFinished = false;
+
         public string boxScene_Name { get; set; } = "res://Prototype/Tennis_v1/ImpactBox_v1.tscn";
         public PackedScene boxScene = null;
+
+        public double maxResetTime = 0.75;
+        public double resetTime = 0.0;
 
         public void Reset()
         {
@@ -145,7 +150,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     (ball as TennisBall_v1).Reset(2);
                 }
                 isReset = false;
-            }
+                isPlayFinished = false;
+                resetTime = 0.0;
+    }
         }
 
 

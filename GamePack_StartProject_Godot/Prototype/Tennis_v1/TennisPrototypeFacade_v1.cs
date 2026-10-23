@@ -61,28 +61,17 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         }
         public void Update(double delta, GameplayTennisModel_v1 gameplayModel)
-        {
-            //if (gameplayModel.isReset)
-            //{
-            //    gameplayModel.player.Position = gameplayModel.isServeLeft ?
-            //        new Vector3(gameplayModel.servePlayerLeft.Position.X, gameplayModel.height, gameplayModel.servePlayerLeft.Position.Z) :
-            //        new Vector3(gameplayModel.servePlayerRight.Position.X, gameplayModel.height, gameplayModel.servePlayerRight.Position.Z);
-            //    gameplayModel.playerAI.Position = gameplayModel.isServeLeft ?
-            //        new Vector3(gameplayModel.servePlayerRight2.Position.X, gameplayModel.height, gameplayModel.servePlayerRight2.Position.Z) :
-            //        new Vector3(gameplayModel.servePlayerLeft2.Position.X, gameplayModel.height, gameplayModel.servePlayerLeft2.Position.Z);
-
-            //    if (gameplayModel.isServeP1)
-            //    {
-            //        (gameplayModel.player as PlayerTennis).Reset();
-            //        (gameplayModel.ball as TennisBall).Reset();
-            //    }
-            //    else
-            //    {
-            //        (gameplayModel.playerAI as PlayerTennisAI).Reset();
-            //        (gameplayModel.ball as TennisBall).ResetServeP2();
-            //    }
-            //    gameplayModel.isReset = false;
-            //}
+        {            
+            if(gameplayModel.isPlayFinished)
+            {
+                if (gameplayModel.resetTime < gameplayModel.maxResetTime)
+                    gameplayModel.resetTime += delta;
+                else
+                {
+                    gameplayModel.isReset = true;
+                    gameplayModel.Reset();
+                }                
+            }
         }
         public void PhysicsProcess(double delta, GameplayTennisModel_v1 gameplayModel)
         {

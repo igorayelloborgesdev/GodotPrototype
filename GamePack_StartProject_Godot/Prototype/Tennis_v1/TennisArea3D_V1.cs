@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GamePackStartProjectGodot.Prototype.Tennis_v1.TennisBall_v1;
 
 namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 {
@@ -27,7 +28,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 {                    
                     ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).theBallWasHit = true;
                     if (((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1)
-                        ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP2;                    
+                    {
+                        ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP2;
+                        ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).ballBounceCourtEnum = BallBounceCourtEnum.neutral;
+                    }
+                    
                 }
             }
         }

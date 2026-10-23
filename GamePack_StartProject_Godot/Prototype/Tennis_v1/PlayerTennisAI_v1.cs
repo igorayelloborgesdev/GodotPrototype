@@ -46,6 +46,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (this.gameplayTennisModel is null)
                 return;
 
+            if (this.gameplayTennisModel.isPlayFinished)
+                return;
+
             if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand && gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP2)
             {                
                 speedServeStandCount += delta;                

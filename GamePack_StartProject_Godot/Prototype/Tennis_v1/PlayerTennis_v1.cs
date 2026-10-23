@@ -79,6 +79,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (this.gameplayTennisModel is null)
                 return;
 
+            if(this.gameplayTennisModel.isPlayFinished)
+                return;
+
             contextMove = new Context_v1(DefineTennisPlayerMoveStrategy());
             contextMove.ContextInterface();
 

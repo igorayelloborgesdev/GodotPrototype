@@ -54,6 +54,14 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         private float Gravity = 0.0f;
         private Vector3 velocity = Vector3.Zero;
         public bool theBallWasHit = false;
+
+        public enum BallBounceCourtEnum
+        {
+            neutral = 0,
+            P1 = 1,
+            P2 = 2
+        }
+        public BallBounceCourtEnum ballBounceCourtEnum = BallBounceCourtEnum.neutral;
         #endregion
 
         public override void _Ready()
@@ -144,14 +152,14 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
             else if ((gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1 || gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2) 
                 && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.InGame)
-            {
+            {                
                 BallBounce(delta);                
             }
 
         }
 
         private void BallBounce(double delta)
-        {
+        {            
 
             if (gameplayTennisModel.playerTennisModel.serveEnumWait == PlayerTennisModel_v1.ServeEnumWait.Init && (GlobalPosition.Z < 1.5f && GlobalPosition.Z > -1.5f))
             {
@@ -188,6 +196,20 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             MoveAndSlide();
             if (IsOnFloor())
             {
+                if (this.GlobalPosition.Z >= 0.0)
+                {
+                    if(ballBounceCourtEnum == BallBounceCourtEnum.P1)
+                        gameplayTennisModel.isPlayFinished = true;
+                    ballBounceCourtEnum = BallBounceCourtEnum.P1;
+                }
+                else
+                {
+                    if (ballBounceCourtEnum == BallBounceCourtEnum.P2)
+                        gameplayTennisModel.isPlayFinished = true;
+                    ballBounceCourtEnum = BallBounceCourtEnum.P2;
+                }                
+                
+
                 velocity.Y = -velocity.Y * BounceFactor;
 
                 velocity.X *= Friction;
@@ -195,6 +217,23 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
                 if (velocity.Length() < 0.1f * SpeedMultiplier)
                     velocity = Vector3.Zero;
+            }
+
+
+            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            {
+                KinematicCollision3D collision = GetSlideCollision(i);
+
+                
+                if (collision.GetCollider() is StaticBody3D staticBody)
+                {                    
+                    if (staticBody.GetParent().Name.ToString().Contains("CourtLimit", StringComparison.OrdinalIgnoreCase))
+                    {
+                        gameplayTennisModel.isPlayFinished = true;
+
+                        GD.Print(ballBounceCourtEnum);//<-
+                    }
+                }                
             }
         }
 
@@ -510,6 +549,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)playerID;
             ballDirectionEnum = BallDirectionEnum.neutral;
             theBallWasHit = false;
+            ballBounceCourtEnum = BallBounceCourtEnum.neutral;
         }
 
     }
