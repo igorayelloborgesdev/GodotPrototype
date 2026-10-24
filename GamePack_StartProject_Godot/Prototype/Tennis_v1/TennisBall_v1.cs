@@ -27,6 +27,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         //Quadra de sintetico (carpet): Speed = 1.95f    
 
         public GameplayTennisModel_v1 gameplayTennisModel = null;
+        private float SpeedMultiplierInit = 1.5f;
         private float SpeedMultiplier = 1.5f;
         private const float BounceFactor = 0.95f;
 
@@ -62,20 +63,22 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             P2 = 2
         }
         public BallBounceCourtEnum ballBounceCourtEnum = BallBounceCourtEnum.neutral;
+
+        public GameplayTennisModel_v1.GameEnum gameEnum = GameplayTennisModel_v1.GameEnum.ServeP1;
         #endregion
+        public bool isfirstServe = true;
 
         public override void _Ready()
         {
             boxScene = GD.Load<PackedScene>("res://Prototype/Tennis/ImpactBox.tscn");
             for (int i = 0; i < 2; i++)
-                CreateImpactBox(Vector3.Zero);
+                CreateImpactBox(Vector3.Zero);           
         }
         public override void _PhysicsProcess(double delta)
         {
             if (gameplayTennisModel.playerTennisModel is null)
                 return;
             BallStates(delta);
-
 
             //TESTE input
             if (Input.IsKeyPressed(Key.A) && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand 
@@ -117,7 +120,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
         }
         private void BallStates(double delta)
-        {
+        {            
+            
+
             if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 || gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP2)
             {
                 if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.Stand)
@@ -131,8 +136,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     if (!tossStarted)
                     {
                         ballDirectionEnum = BallDirectionEnum.up;
-                        tossStarted = true;
-                        //SpeedMultiplier = 2.0f;
+                        tossStarted = true;                        
                         Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
                         Vector3 pos = GlobalPosition;
                         float alvoX = pos.X;
@@ -152,7 +156,20 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
             else if ((gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP1 || gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2) 
                 && gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.InGame)
-            {                
+            {
+                if (gameplayTennisModel.gameEnum != gameEnum &&
+                (gameplayTennisModel.gameEnum != GameplayTennisModel_v1.GameEnum.ServeP1 && gameplayTennisModel.gameEnum != GameplayTennisModel_v1.GameEnum.ServeP2))
+                {                    
+                    if (!isfirstServe)
+                    {                        
+                        ShowHideBallTrail(gameplayTennisModel.isSpecial);
+                        SpeedMultiplier = SpeedMultiplierInit + (gameplayTennisModel.isSpecial ? 2.0f : 0.0f);
+                        Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
+                    }
+                    isfirstServe = false;
+                    gameEnum = gameplayTennisModel.gameEnum;
+                }
+
                 BallBounce(delta);                
             }
 
@@ -194,6 +211,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             velocity.Z *= FrictionXZ;
             Velocity = velocity;
             MoveAndSlide();
+
+            UpdateBallTrail(this.GlobalPosition);
+
             if (IsOnFloor())
             {
                 if (this.GlobalPosition.Z >= 0.0)
@@ -230,11 +250,25 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     if (staticBody.GetParent().Name.ToString().Contains("CourtLimit", StringComparison.OrdinalIgnoreCase))
                     {
                         gameplayTennisModel.isPlayFinished = true;
-
-                        GD.Print(ballBounceCourtEnum);//<-
                     }
                 }                
             }
+        }
+
+        private void UpdateBallTrail(Vector3 newPoint)
+        {            
+            for (int i = gameplayTennisModel.ballTrailPathList.Count - 1; i > 0; i--)
+            {
+                gameplayTennisModel.ballTrailPathList[i].Position =
+                    gameplayTennisModel.ballTrailPathList[i - 1].Position;
+            }
+            gameplayTennisModel.ballTrailPathList[0].Position = newPoint;
+        }
+
+        private void ShowHideBallTrail(bool isShow)
+        {
+            for (int i = 0; i < gameplayTennisModel.ballTrailPathList.Count; i++)            
+                gameplayTennisModel.ballTrailPathList[i].Visible = isShow;                         
         }
 
         private void CreateImpactBox(Vector3 position)
@@ -454,7 +488,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public TennisBall_v1 GameplayTennisModelBuilder(GameplayTennisModel_v1 gameplayTennisModel)
         {
-            this.gameplayTennisModel = gameplayTennisModel;
+            this.gameplayTennisModel = gameplayTennisModel;            
             return this;
         }
         public TennisBall_v1 SetServePointBuilder()
@@ -542,14 +576,16 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public void Reset(int playerID)
         {
             Gravity = 0.0f;
-            velocity = Vector3.Zero;
-            //SpeedMultiplier = 2.0f;
+            velocity = Vector3.Zero;            
             tossStarted = false;
             ballDirectionEnum = BallDirectionEnum.neutral;
             gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)playerID;
             ballDirectionEnum = BallDirectionEnum.neutral;
             theBallWasHit = false;
             ballBounceCourtEnum = BallBounceCourtEnum.neutral;
+            isfirstServe = true;
+            SpeedMultiplier = SpeedMultiplierInit;
+            ShowHideBallTrail(false);
         }
 
     }

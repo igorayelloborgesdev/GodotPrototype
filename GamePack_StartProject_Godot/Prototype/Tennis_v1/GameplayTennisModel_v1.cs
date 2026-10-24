@@ -37,9 +37,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public string P2LeftName { get; set; } = "../P2Left";
         public string P2RightName { get; set; } = "../P2Right";
 
+        public string ballTrailPathName { get; set; } = "res://Prototype/Tennis_v1/ball_trail.tscn";
 
         public string ballPathName { get; set; } = "res://Prototype/Tennis_v1/tennis_ball_v1.tscn";
-
+        public Node3D ballTrailPathObj;
+        public List<Node3D> ballTrailPathList = new List<Node3D>(5);
 
         public CharacterBody3D player;
 
@@ -128,6 +130,8 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public double maxResetTime = 0.75;
         public double resetTime = 0.0;
 
+        public bool isSpecial = false;
+
         public void Reset()
         {
             if (isReset)
@@ -152,7 +156,8 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 isReset = false;
                 isPlayFinished = false;
                 resetTime = 0.0;
-    }
+                isSpecial = false;
+            }
         }
 
 

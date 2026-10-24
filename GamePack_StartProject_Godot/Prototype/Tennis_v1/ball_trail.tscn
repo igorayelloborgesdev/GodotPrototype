@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuhm3ocuy8wkc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_m142q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s485u"]
+diffuse_mode = 2
+albedo_color = Color(1, 0.72549, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_m142q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_s485u")

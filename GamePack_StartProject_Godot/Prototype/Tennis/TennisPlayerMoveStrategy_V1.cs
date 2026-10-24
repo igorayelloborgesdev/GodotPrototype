@@ -145,7 +145,12 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
         public override void MovePlayerAlgorithmInterface()
         {
 
-            if (Input.IsKeyPressed(Key.A) || Input.IsKeyPressed(Key.S))//<- PAREI AQUI - ESPECIAL
+            if (Input.IsKeyPressed(Key.S))
+                this.gameplayTennisModel.isSpecial = true;
+            else
+                this.gameplayTennisModel.isSpecial = false;
+
+            if (Input.IsKeyPressed(Key.A) || Input.IsKeyPressed(Key.S))
             {
                 this.gameplayTennisModel.playerTennisModel.direction.X = 0.0f;
                 this.gameplayTennisModel.playerTennisModel.direction.Z = 0.0f;

@@ -57,8 +57,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             control.AddChild(gameplayModel.ball);
             (gameplayModel.ball as TennisBall_v1).GameplayTennisModelBuilder(gameplayModel).SetServePointBuilder().SetCourtPointBuilder().SetBoxSceneBuilder();
 
-
-
+            PackedScene ballTrailPath = ResourceLoader.Load<PackedScene>(gameplayModel.ballTrailPathName);
+            for (int i = 0; i < 5; i++)
+            {
+                gameplayModel.ballTrailPathList.Add(ballTrailPath.Instantiate<Node3D>());
+                gameplayModel.ballTrailPathList[i].Visible = false;
+                control.AddChild(gameplayModel.ballTrailPathList[i]);
+            }            
         }
         public void Update(double delta, GameplayTennisModel_v1 gameplayModel)
         {            
