@@ -150,6 +150,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
             else
                 this.gameplayTennisModel.isSpecial = false;
 
+            if (Input.IsKeyPressed(Key.A))
+                this.gameplayTennisModel.isBackhand = true;
+            else
+                this.gameplayTennisModel.isBackhand = false;
+
             if (Input.IsKeyPressed(Key.A) || Input.IsKeyPressed(Key.S))
             {
                 this.gameplayTennisModel.playerTennisModel.direction.X = 0.0f;

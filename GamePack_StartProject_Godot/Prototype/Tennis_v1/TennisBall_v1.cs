@@ -16,15 +16,15 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         //Quadra dura: Bounce = 0.80f
         //Quadra de grama: Bounce = 0.65f
         //Quadra de sintetico (carpet): Bounce = 0.5f
-        //Quadra de saibro: Speed = 1.0f
-        //Quadra dura: Speed = 1.25f
-        //Quadra de grama: Speed= 1.5f
-        //Quadra de sintetico (carpet): Speed = 1.75f    
+        //Quadra de saibro: Speed = 1.5f
+        //Quadra dura: Speed = 1.7f
+        //Quadra de grama: Speed= 1.9f
+        //Quadra de sintetico (carpet): Speed = 2.1f    
 
         //Quadra de saibro: Speed = 1.5f
-        //Quadra dura: Speed = 1.65f
-        //Quadra de grama: Speed= 1.8f
-        //Quadra de sintetico (carpet): Speed = 1.95f    
+        //Quadra dura: Speed = 1.7f
+        //Quadra de grama: Speed= 1.9f
+        //Quadra de sintetico (carpet): Speed = 2.1f    
 
         public GameplayTennisModel_v1 gameplayTennisModel = null;
         private float SpeedMultiplierInit = 1.5f;
@@ -147,7 +147,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     ThrowBallFunction(delta);
                 }
                 else if (gameplayTennisModel.playerTennisModel.serveEnum == PlayerTennisModel_v1.ServeEnum.HitBall)
-                {                    
+                {
+                    SpeedMultiplier = SpeedMultiplierInit 
+                        + (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 ?
+                        (gameplayTennisModel.player as PlayerTennis_v1).servePower :
+                        (gameplayTennisModel.playerAI as PlayerTennisAI_v1).servePower);
+                    Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;                    
+
                     gameplayTennisModel.gameEnum = gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 ?
                         GameplayTennisModel_v1.GameEnum.InGameP2 : GameplayTennisModel_v1.GameEnum.InGameP1;
 
@@ -161,10 +167,31 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 (gameplayTennisModel.gameEnum != GameplayTennisModel_v1.GameEnum.ServeP1 && gameplayTennisModel.gameEnum != GameplayTennisModel_v1.GameEnum.ServeP2))
                 {                    
                     if (!isfirstServe)
-                    {                        
+                    {                                                
+                        var specialIncrease = 0.0f;
+                        var backHandForeHandIncrease = 0.0f;
+                        if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
+                        {
+                            specialIncrease = (gameplayTennisModel.isSpecial ? 2.0f : 0.0f);
+                            backHandForeHandIncrease = gameplayTennisModel.isBackhand ? (gameplayTennisModel.player as PlayerTennis_v1).servePower : 0.0f;
+                        }                        
+                        else
+                        {
+                            gameplayTennisModel.isSpecial = false;
+                            backHandForeHandIncrease = (gameplayTennisModel.playerAI as PlayerTennisAI_v1).servePower;
+                        }
+                            
                         ShowHideBallTrail(gameplayTennisModel.isSpecial);
-                        SpeedMultiplier = SpeedMultiplierInit + (gameplayTennisModel.isSpecial ? 2.0f : 0.0f);
+
+                        SpeedMultiplier = SpeedMultiplierInit + specialIncrease + backHandForeHandIncrease;
                         Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
+
+                        GD.Print("-------------------------------");//<-
+                        GD.Print(gameplayTennisModel.gameEnum);
+                        GD.Print(gameplayTennisModel.isBackhand);
+                        GD.Print(gameplayTennisModel.isSpecial);
+                        GD.Print(SpeedMultiplier);
+
                     }
                     isfirstServe = false;
                     gameEnum = gameplayTennisModel.gameEnum;

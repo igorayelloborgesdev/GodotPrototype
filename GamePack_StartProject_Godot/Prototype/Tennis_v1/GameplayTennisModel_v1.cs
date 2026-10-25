@@ -132,6 +132,8 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public bool isSpecial = false;
 
+        public bool isBackhand = false;
+
         public void Reset()
         {
             if (isReset)
@@ -157,6 +159,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                 isPlayFinished = false;
                 resetTime = 0.0;
                 isSpecial = false;
+                isBackhand = false;
             }
         }
 

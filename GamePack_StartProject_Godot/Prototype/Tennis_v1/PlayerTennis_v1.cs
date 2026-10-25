@@ -16,9 +16,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public string serveBallRefName { get; set; } = "ServeBallRef";
         public float Speed = 18.0f;
 
-        //public double speedServe = 0.0;
         public double speedServe = 0.0;
         public double speedBackHand = 0.0;
+
+        public float servePower = 0.2f;
+        public float BackhandForehandPower = 0.2f;
 
         public Context_v1 contextMove;        
         public Node3D ServeBallGoodMinRef = null;
