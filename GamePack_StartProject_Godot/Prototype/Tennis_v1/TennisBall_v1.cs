@@ -186,12 +186,6 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                         SpeedMultiplier = SpeedMultiplierInit + specialIncrease + backHandForeHandIncrease;
                         Gravity = BaseGravity * SpeedMultiplier * SpeedMultiplier;
 
-                        GD.Print("-------------------------------");//<-
-                        GD.Print(gameplayTennisModel.gameEnum);
-                        GD.Print(gameplayTennisModel.isBackhand);
-                        GD.Print(gameplayTennisModel.isSpecial);
-                        GD.Print(SpeedMultiplier);
-
                     }
                     isfirstServe = false;
                     gameEnum = gameplayTennisModel.gameEnum;
@@ -270,7 +264,6 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             for (int i = 0; i < GetSlideCollisionCount(); i++)
             {
                 KinematicCollision3D collision = GetSlideCollision(i);
-
                 
                 if (collision.GetCollider() is StaticBody3D staticBody)
                 {                    

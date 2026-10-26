@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6uarwjxr38d0"]
+[gd_scene load_steps=12 format=3 uid="uid://c6uarwjxr38d0"]
 
 [ext_resource type="Script" uid="uid://bowidhhldetde" path="res://Prototype/Tennis_v1/TennisPrototypeView_v1.cs" id="1_ctjtq"]
 [ext_resource type="PackedScene" uid="uid://3ibdsi8xrtgv" path="res://Prototype/Tennis/tennis_court.gltf" id="2_bdi8o"]
+[ext_resource type="Texture2D" uid="uid://dgw4aa51oyeky" path="res://Art/2d/NeutralPixel.png" id="3_bdi8o"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_1402a"]
 
@@ -317,3 +318,99 @@ mesh = SubResource("BoxMesh_ctjtq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CourtLimit4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bdi8o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 233.0
+offset_bottom = 122.0
+texture = ExtResource("3_bdi8o")
+expand_mode = 1
+
+[node name="LabelP1" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 78.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Player 1"
+
+[node name="LabelP2" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 78.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Player 2"
+
+[node name="Set1_P1" type="Label" parent="CanvasLayer"]
+offset_left = 88.0
+offset_top = 25.0
+offset_right = 104.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Set1_P2" type="Label" parent="CanvasLayer"]
+offset_left = 88.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Set2_P1" type="Label" parent="CanvasLayer"]
+offset_left = 112.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Set2_P2" type="Label" parent="CanvasLayer"]
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 128.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Set3_P1" type="Label" parent="CanvasLayer"]
+offset_left = 136.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Set3_P2" type="Label" parent="CanvasLayer"]
+offset_left = 136.0
+offset_top = 56.0
+offset_right = 152.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Game_P1" type="Label" parent="CanvasLayer"]
+offset_left = 168.0
+offset_top = 24.0
+offset_right = 202.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+
+[node name="Game_P2" type="Label" parent="CanvasLayer"]
+offset_left = 168.0
+offset_top = 56.0
+offset_right = 202.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1

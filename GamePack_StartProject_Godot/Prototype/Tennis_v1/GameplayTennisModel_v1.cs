@@ -100,6 +100,26 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public string servePlayerLeftP3_1Name { get; set; } = "../ServePlayerLeftP3_1";
         public Node3D servePlayerLeftP3_1 = null;
 
+
+        public string canvasLayerSet1_P1Name { get; set; } = "./CanvasLayer/Set1_P1";
+        public string canvasLayerSet1_P2Name { get; set; } = "./CanvasLayer/Set1_P2";
+        public string canvasLayerSet2_P1Name { get; set; } = "./CanvasLayer/Set2_P1";
+        public string canvasLayerSet2_P2Name { get; set; } = "./CanvasLayer/Set2_P2";
+        public string canvasLayerSet3_P1Name { get; set; } = "./CanvasLayer/Set3_P1";
+        public string canvasLayerSet3_P2Name { get; set; } = "./CanvasLayer/Set3_P2";
+        public string canvasLayerGame_P1Name { get; set; } = "./CanvasLayer/Game_P1";
+        public string canvasLayerGame_P2Name { get; set; } = "./CanvasLayer/Game_P2";
+
+        public Label canvasLayerSet1_P1 = null;
+        public Label canvasLayerSet1_P2 = null;
+        public Label canvasLayerSet2_P1 = null;
+        public Label canvasLayerSet2_P2 = null;
+        public Label canvasLayerSet3_P1 = null;
+        public Label canvasLayerSet3_P2 = null;
+        public Label canvasLayerGame_P1 = null;
+        public Label canvasLayerGame_P2 = null;
+
+
         public float height = 0.0130f;
         public CharacterBody3D ball;
 
@@ -134,6 +154,23 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
 
         public bool isBackhand = false;
 
+        public int scoreGameP1 = 0;
+        public int scoreGameP2 = 0;
+
+        public int scoreSetP1 = 0;
+        public int scoreSetP2 = 0;
+
+        public string[] scoreArray =
+        {
+            "0",
+            "15",
+            "30",
+            "40",
+            "AD",
+            ""
+        };
+
+
         public void Reset()
         {
             if (isReset)
@@ -163,6 +200,52 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
         }
 
+        public void ResetGame()
+        {
+            if (isReset)
+            {                
+                this.isServeLeft = !this.isServeLeft;
+
+                player.Position = isServeLeft ?
+                    new Vector3(servePlayerLeft.Position.X, height, servePlayerLeft.Position.Z) :
+                    new Vector3(servePlayerRight.Position.X, height, servePlayerRight.Position.Z);
+                playerAI.Position = isServeLeft ?
+                    new Vector3(servePlayerRight2.Position.X, height, servePlayerRight2.Position.Z) :
+                    new Vector3(servePlayerLeft2.Position.X, height, servePlayerLeft2.Position.Z);
+                
+                if (isServeP1)
+                {
+                    (player as PlayerTennis_v1).Reset();
+                    (ball as TennisBall_v1).Reset(1);
+                }
+                else
+                {
+                    (playerAI as PlayerTennisAI_v1).Reset();
+                    (ball as TennisBall_v1).Reset(2);
+                }
+                isReset = false;
+                isPlayFinished = false;
+                resetTime = 0.0;
+                isSpecial = false;
+                isBackhand = false;
+                
+            }
+        }
+        public void DefineGameScore(int player)
+        {            
+            GD.Print("TESTE");//<-
+            scoreGameP1 = 0;
+            scoreGameP2 = 0;
+
+            scoreSetP1 += player == 1 ? 1 : 0;
+            scoreSetP2 += player == 2 ? 1 : 0;
+
+            canvasLayerSet1_P1.Text = scoreSetP1.ToString();
+            canvasLayerSet1_P2.Text = scoreSetP2.ToString();
+
+            canvasLayerGame_P1.Text = scoreGameP1.ToString();
+            canvasLayerGame_P2.Text = scoreGameP2.ToString();
+        }
 
     }
 }
