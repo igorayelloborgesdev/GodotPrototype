@@ -74,6 +74,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             gameplayModel.canvasLayerGame_P1 = control.GetNode<Label>(gameplayModel.canvasLayerGame_P1Name);
             gameplayModel.canvasLayerGame_P2 = control.GetNode<Label>(gameplayModel.canvasLayerGame_P2Name);
 
+            gameplayModel.canvasLayerSet_P1_List.Add(gameplayModel.canvasLayerSet1_P1);
+            gameplayModel.canvasLayerSet_P1_List.Add(gameplayModel.canvasLayerSet2_P1);
+            gameplayModel.canvasLayerSet_P1_List.Add(gameplayModel.canvasLayerSet3_P1);
+            gameplayModel.canvasLayerSet_P2_List.Add(gameplayModel.canvasLayerSet1_P2);
+            gameplayModel.canvasLayerSet_P2_List.Add(gameplayModel.canvasLayerSet2_P2);
+            gameplayModel.canvasLayerSet_P2_List.Add(gameplayModel.canvasLayerSet3_P2);
+
             gameplayModel.canvasLayerSet1_P1.Text = "0".ToString();
             gameplayModel.canvasLayerSet1_P2.Text = "0".ToString();
             gameplayModel.canvasLayerSet2_P1.Text = "0".ToString();
@@ -112,56 +119,138 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
             DefineGameEnding(gameplayModel);
         }
-        private void DefineGameEnding(GameplayTennisModel_v1 gameplayModel)//<- PAREI AQUI
+        private void DefineGameEnding(GameplayTennisModel_v1 gameplayModel)
         {
-            if (gameplayModel.scoreGameP1 == 4 || gameplayModel.scoreGameP2 == 4)
+            if (!gameplayModel.isTieBreak)
             {
-                if (Math.Abs(gameplayModel.scoreGameP1 - gameplayModel.scoreGameP2) == 1)
+                if (gameplayModel.scoreGameP1 == 4 || gameplayModel.scoreGameP2 == 4)
                 {
-                    
+                    if (gameplayModel.scoreGameP1 == 4 && gameplayModel.scoreGameP2 == 4)
+                    {
+                        gameplayModel.scoreGameP1 = 3;
+                        gameplayModel.scoreGameP2 = 3;
+                    }
+                    else if (Math.Abs(gameplayModel.scoreGameP1 - gameplayModel.scoreGameP2) > 1)
+                    {
+                        var scorePlayer = gameplayModel.scoreGameP1 > gameplayModel.scoreGameP2 ? 1 : 2;
+                        DefinePlayerServe(gameplayModel);
+                        gameplayModel.DefineGameScore(scorePlayer);
+                        DefineSetEnding(gameplayModel);
+                    }
                 }
-                if (Math.Abs(gameplayModel.scoreGameP1 - gameplayModel.scoreGameP2) > 1)
+                else if (gameplayModel.scoreGameP1 == 5 || gameplayModel.scoreGameP2 == 5)
                 {
                     var scorePlayer = gameplayModel.scoreGameP1 > gameplayModel.scoreGameP2 ? 1 : 2;
-                    GD.Print(scorePlayer);//<-
+                    DefinePlayerServe(gameplayModel);
                     gameplayModel.DefineGameScore(scorePlayer);
-                    return;
+                    DefineSetEnding(gameplayModel);
                 }
-                if (gameplayModel.scoreGameP1 ==  gameplayModel.scoreGameP2)
-                {                    
-                    gameplayModel.scoreGameP1 = 3;
-                    gameplayModel.scoreGameP2 = 3;
-                    DefinCountText(gameplayModel);
-                    return;
+                else if (gameplayModel.scoreSetP1 == 6 && gameplayModel.scoreSetP2 == 6)
+                {
+                    DefineSetEnding(gameplayModel);
+                    DefinePlayerServe(gameplayModel);
+                }
+
+                DefinCountText(gameplayModel);
+            }
+            else 
+            {
+                DefinePlayerServe(gameplayModel);
+                DefineTieBreakEnding(gameplayModel);
+                DefinCountTextTieBreak(gameplayModel);                
+            }
+            
+        }
+        private void DefineSetEnding(GameplayTennisModel_v1 gameplayModel)
+        {
+            if (gameplayModel.scoreSetP1 == 6 && gameplayModel.scoreSetP2 == 6)
+            {
+                GD.Print("A");
+                gameplayModel.scoreGameP1 = 0;
+                gameplayModel.scoreGameP2 = 0;
+                gameplayModel.isTieBreak = true;
+                DefinCountTextTieBreak(gameplayModel);
+                DefinePlayerServe(gameplayModel);
+            }
+            else if ((gameplayModel.scoreSetP1 == 7 && gameplayModel.scoreSetP2 == 5) ||
+                    (gameplayModel.scoreSetP1 == 5 && gameplayModel.scoreSetP2 == 7))
+            {
+                GD.Print("B");
+            }
+            else if (gameplayModel.scoreSetP1 == 6 || gameplayModel.scoreSetP2 == 6)
+            {
+                if (Math.Abs(gameplayModel.scoreSetP1 - gameplayModel.scoreSetP2) > 1)
+                {
+                    GD.Print("C");
+                    GD.Print(gameplayModel.scoreSetP1);
+                    GD.Print(gameplayModel.scoreSetP2);
+                }
+            }
+        }
+        private void DefineTieBreakEnding(GameplayTennisModel_v1 gameplayModel)
+        {
+            if (gameplayModel.scoreGameP1 > 6 || gameplayModel.scoreGameP2 > 6)
+            {
+                if (Math.Abs(gameplayModel.scoreGameP1 - gameplayModel.scoreGameP2) > 1)
+                {
+                    GD.Print("D 1");
+                    gameplayModel.scoreSetP1 += gameplayModel.scoreGameP1 > gameplayModel.scoreGameP2 ? 1 : 0;
+                    gameplayModel.scoreSetP2 += gameplayModel.scoreGameP2 > gameplayModel.scoreGameP1 ? 1 : 0;
+
+                    gameplayModel.canvasLayerSet_P1_List[gameplayModel.gameSet].Text = gameplayModel.scoreSetP1.ToString();
+                    gameplayModel.canvasLayerSet_P2_List[gameplayModel.gameSet].Text = gameplayModel.scoreSetP2.ToString();
                 }                
+            }            
+        }
+
+        private void DefinePlayerServe(GameplayTennisModel_v1 gameplayModel)
+        {
+            if (!gameplayModel.isTieBreak)
+            {
+                gameplayModel.isServeP1 = gameplayModel.isServeP1 ? false : true;
+                gameplayModel.gameEnum = gameplayModel.gameEnum == GameplayTennisModel_v1.GameEnum.ServeP1 ?
+                    GameplayTennisModel_v1.GameEnum.ServeP2 : GameplayTennisModel_v1.GameEnum.ServeP1;
             }
             else
             {
-                DefinCountText(gameplayModel);
-                return;
-            }
-                
-            if (gameplayModel.scoreGameP1 == 5 || gameplayModel.scoreGameP2 == 5)
-            {
-                var scorePlayer = gameplayModel.scoreGameP1 > gameplayModel.scoreGameP2 ? 1 : 2;
-                GD.Print(scorePlayer);//<-
-                gameplayModel.DefineGameScore(scorePlayer);
-                return;
-            }
-            else
-            {
-                DefinCountText(gameplayModel);
-                return;
-            }
+                if (gameplayModel.scoreGameP1 == 0 && gameplayModel.scoreGameP2 == 0)
+                {
+                    gameplayModel.isServeLeft = false;
+                    gameplayModel.isServeP1 = !gameplayModel.isServeP1;
+                    gameplayModel.gameEnum = gameplayModel.isServeP1 ?
+                        GameplayTennisModel_v1.GameEnum.ServeP1 : GameplayTennisModel_v1.GameEnum.ServeP2;
+                }
+                else
+                {                    
+                    var isChange = (gameplayModel.scoreGameP1 + gameplayModel.scoreGameP2) % 2;
+                    if (isChange == 1)
+                    {
+                        gameplayModel.isServeP1 = !gameplayModel.isServeP1;
+                        gameplayModel.gameEnum = gameplayModel.isServeP1 ?
+                            GameplayTennisModel_v1.GameEnum.ServeP1 : GameplayTennisModel_v1.GameEnum.ServeP2;
+                    }
+
+                }
+                    
+            }            
         }
         private void DefinCountText(GameplayTennisModel_v1 gameplayModel)
         {
             gameplayModel.canvasLayerGame_P1.Text = DefineCountText(gameplayModel, 1);
             gameplayModel.canvasLayerGame_P2.Text = DefineCountText(gameplayModel, 2);
+            
+            gameplayModel.canvasLayerSet_P1_List[gameplayModel.gameSet].Text = gameplayModel.scoreSetP1.ToString();
+            gameplayModel.canvasLayerSet_P2_List[gameplayModel.gameSet].Text = gameplayModel.scoreSetP2.ToString();
+        }
+
+        private void DefinCountTextTieBreak(GameplayTennisModel_v1 gameplayModel)
+        {
+            gameplayModel.canvasLayerGame_P1.Text = gameplayModel.scoreGameP1.ToString();
+            gameplayModel.canvasLayerGame_P2.Text = gameplayModel.scoreGameP2.ToString();
         }
 
         private string DefineCountText(GameplayTennisModel_v1 gameplayModel, int playerPos)
-        {
+        {            
             if (playerPos == 1)
                 return gameplayModel.scoreArray[gameplayModel.scoreGameP1];
             else

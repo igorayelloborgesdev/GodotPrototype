@@ -110,6 +110,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public string canvasLayerGame_P1Name { get; set; } = "./CanvasLayer/Game_P1";
         public string canvasLayerGame_P2Name { get; set; } = "./CanvasLayer/Game_P2";
 
+        public List<Label> canvasLayerSet_P1_List = new List<Label>();
+        public List<Label> canvasLayerSet_P2_List = new List<Label>();
+
         public Label canvasLayerSet1_P1 = null;
         public Label canvasLayerSet1_P2 = null;
         public Label canvasLayerSet2_P1 = null;
@@ -157,8 +160,12 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public int scoreGameP1 = 0;
         public int scoreGameP2 = 0;
 
-        public int scoreSetP1 = 0;
-        public int scoreSetP2 = 0;
+        public int scoreSetP1 = 5;
+        public int scoreSetP2 = 6;
+
+        public int gameSet = 0;
+
+        public bool isTieBreak = false;
 
         public string[] scoreArray =
         {
@@ -192,6 +199,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     (playerAI as PlayerTennisAI_v1).Reset();
                     (ball as TennisBall_v1).Reset(2);
                 }
+                gameSet = 0;
+                scoreGameP1 = 0;
+                scoreGameP2 = 0;
+                isTieBreak = false;
+
+                scoreSetP1 = 0;
+                scoreSetP2 = 0;
                 isReset = false;
                 isPlayFinished = false;
                 resetTime = 0.0;
@@ -232,19 +246,12 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
         }
         public void DefineGameScore(int player)
-        {            
-            GD.Print("TESTE");//<-
+        {                        
             scoreGameP1 = 0;
             scoreGameP2 = 0;
 
             scoreSetP1 += player == 1 ? 1 : 0;
             scoreSetP2 += player == 2 ? 1 : 0;
-
-            canvasLayerSet1_P1.Text = scoreSetP1.ToString();
-            canvasLayerSet1_P2.Text = scoreSetP2.ToString();
-
-            canvasLayerGame_P1.Text = scoreGameP1.ToString();
-            canvasLayerGame_P2.Text = scoreGameP2.ToString();
         }
 
     }
