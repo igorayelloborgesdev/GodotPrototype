@@ -161,7 +161,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public int scoreGameP2 = 0;
 
         public int scoreSetP1 = 5;
-        public int scoreSetP2 = 6;
+        public int scoreSetP2 = 4;
 
         public int gameSet = 0;
 
@@ -177,6 +177,37 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             ""
         };
 
+        public List<int> p1_set_List = new List<int>();
+        public List<int> p2_set_List = new List<int>();
+
+        public void ResetSet()
+        {
+            p1_set_List[gameSet] = scoreSetP1;
+            p2_set_List[gameSet] = scoreSetP2;
+
+            scoreGameP1 = 0;
+            scoreGameP2 = 0;
+
+            scoreSetP1 = 5;
+            scoreSetP2 = 6;
+
+            isTieBreak = false;
+
+            var scoreFinalP1 = 0;
+            var scoreFinalP2 = 0;
+            for (var i = 0; i < p1_set_List.Count(); i++)
+            {
+                if (p1_set_List[i] > p2_set_List[i])
+                    scoreFinalP1++;
+                else if (p1_set_List[i] < p2_set_List[i])
+                    scoreFinalP2++;
+            }
+
+            if (scoreFinalP1 == 2 || scoreFinalP2 == 2)
+                GD.Print("GAME FINISHED");
+
+            gameSet++;
+        }
 
         public void Reset()
         {

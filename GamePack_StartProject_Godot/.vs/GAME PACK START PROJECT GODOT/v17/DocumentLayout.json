@@ -67,8 +67,7 @@
               "ViewState": "AgIAALkBAAAAAAAAAAAEwMgBAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-18T22:35:46.347Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -94,8 +93,7 @@
               "ViewState": "AgIAAAIAAAAAAAAAAADgvxQAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T00:07:03.117Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -118,7 +116,7 @@
               "RelativeDocumentMoniker": "Prototype\\Tennis_v1\\GameplayTennisModel_v1.cs",
               "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis_v1\\GameplayTennisModel_v1.cs",
               "RelativeToolTip": "Prototype\\Tennis_v1\\GameplayTennisModel_v1.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAvwJ8AAAATAAAAAAAAAA==",
+              "ViewState": "AgIAALYAAAAAAAAAAAAywM4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T00:13:12.653Z",
               "IsPinned": true,
@@ -132,7 +130,7 @@
               "RelativeDocumentMoniker": "Prototype\\Tennis_v1\\TennisPrototypeFacade_v1.cs",
               "ToolTip": "D:\\IGOR\\IGOR\\IgorAyelloBorges\\PROJETOS\\GodotPrototype\\GamePack_StartProject_Godot\\Prototype\\Tennis_v1\\TennisPrototypeFacade_v1.cs",
               "RelativeToolTip": "Prototype\\Tennis_v1\\TennisPrototypeFacade_v1.cs",
-              "ViewState": "AgIAALQAAAAAAAAAAAAvwMYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALoAAAAAAAAAAAAcwMkAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T01:04:50.347Z",
               "IsPinned": true,
@@ -149,8 +147,7 @@
               "ViewState": "AgIAAIEAAAAAAAAAAAAvwJAAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T01:11:25.821Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -163,8 +160,7 @@
               "ViewState": "AgIAAEQAAAAAAAAAAADwv0wAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T01:19:34.861Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -177,8 +173,7 @@
               "ViewState": "AgIAAEYAAAAAAAAAAIA8wF0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T01:22:00.079Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",

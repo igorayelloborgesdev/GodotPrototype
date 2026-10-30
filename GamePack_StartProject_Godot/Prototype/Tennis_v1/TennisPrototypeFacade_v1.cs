@@ -90,6 +90,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             gameplayModel.canvasLayerGame_P1.Text = "0".ToString();
             gameplayModel.canvasLayerGame_P2.Text = "0".ToString();
 
+            gameplayModel.p1_set_List.Add(0);
+            gameplayModel.p1_set_List.Add(0);
+            gameplayModel.p1_set_List.Add(0);
+
+            gameplayModel.p2_set_List.Add(0);
+            gameplayModel.p2_set_List.Add(0);
+            gameplayModel.p2_set_List.Add(0);
 
         }
         public void Update(double delta, GameplayTennisModel_v1 gameplayModel)
@@ -164,8 +171,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         private void DefineSetEnding(GameplayTennisModel_v1 gameplayModel)
         {
             if (gameplayModel.scoreSetP1 == 6 && gameplayModel.scoreSetP2 == 6)
-            {
-                GD.Print("A");
+            {                
                 gameplayModel.scoreGameP1 = 0;
                 gameplayModel.scoreGameP2 = 0;
                 gameplayModel.isTieBreak = true;
@@ -174,16 +180,16 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             }
             else if ((gameplayModel.scoreSetP1 == 7 && gameplayModel.scoreSetP2 == 5) ||
                     (gameplayModel.scoreSetP1 == 5 && gameplayModel.scoreSetP2 == 7))
-            {
-                GD.Print("B");
+            {                
+                DefinCountText(gameplayModel);                
+                gameplayModel.ResetSet();
             }
             else if (gameplayModel.scoreSetP1 == 6 || gameplayModel.scoreSetP2 == 6)
             {
                 if (Math.Abs(gameplayModel.scoreSetP1 - gameplayModel.scoreSetP2) > 1)
-                {
-                    GD.Print("C");
-                    GD.Print(gameplayModel.scoreSetP1);
-                    GD.Print(gameplayModel.scoreSetP2);
+                {                    
+                    DefinCountText(gameplayModel);
+                    gameplayModel.ResetSet();
                 }
             }
         }
@@ -192,13 +198,14 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if (gameplayModel.scoreGameP1 > 6 || gameplayModel.scoreGameP2 > 6)
             {
                 if (Math.Abs(gameplayModel.scoreGameP1 - gameplayModel.scoreGameP2) > 1)
-                {
-                    GD.Print("D 1");
+                {                    
                     gameplayModel.scoreSetP1 += gameplayModel.scoreGameP1 > gameplayModel.scoreGameP2 ? 1 : 0;
                     gameplayModel.scoreSetP2 += gameplayModel.scoreGameP2 > gameplayModel.scoreGameP1 ? 1 : 0;
 
                     gameplayModel.canvasLayerSet_P1_List[gameplayModel.gameSet].Text = gameplayModel.scoreSetP1.ToString();
                     gameplayModel.canvasLayerSet_P2_List[gameplayModel.gameSet].Text = gameplayModel.scoreSetP2.ToString();
+                 
+                    gameplayModel.ResetSet();
                 }                
             }            
         }
