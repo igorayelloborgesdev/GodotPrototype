@@ -22,6 +22,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public float servePower = 0.2f;
         public float BackhandForehandPower = 0.2f;
 
+        public int specialBar = 0;
+        private const int specialBarMax = 100;
+
         public Context_v1 contextMove;        
         public Node3D ServeBallGoodMinRef = null;
         public string ServeBallGoodMinRefName { get; set; } = "ServeBallGoodMinRef";
@@ -196,7 +199,15 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             this.gameplayTennisModel = gameplayTennisModel;
             return this;
         }
-
+        public void SetSpecialBar()
+        {
+            specialBar += 10;        
+            if(specialBar >= specialBarMax)        
+            {
+                specialBar = specialBarMax;
+            }
+            GD.Print(specialBar);//<-
+        }
         public void Reset()
         {
             gameplayTennisModel.gameEnum = (GameplayTennisModel_v1.GameEnum)1;

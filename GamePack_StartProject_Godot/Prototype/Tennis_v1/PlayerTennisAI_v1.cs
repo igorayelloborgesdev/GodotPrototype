@@ -20,6 +20,9 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public double speedServeStand = 0.75;
         public double speedServeStandCount = 0.0;
 
+        public int specialBar = 0;
+        private const int specialBarMax = 100;
+
         public float servePower = 0.0f;
         public float BackhandForehandPower = 0.2f;
 
@@ -184,7 +187,14 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             rng.Randomize();
             return rng.RandfRange(0.0f, 100.0f);
         }
-
+        public void SetSpecialBar()
+        {
+            specialBar += 10;
+            if (specialBar >= specialBarMax)
+            {
+                specialBar = specialBarMax;
+            }            
+        }
         public void Reset()
         {
             speedServeStandCount = 0.0;

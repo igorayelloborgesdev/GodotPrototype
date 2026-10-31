@@ -33,6 +33,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                         ((player_IA_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).ballBounceCourtEnum = BallBounceCourtEnum.neutral;
                         player_IA_tennis_prototype.gameplayTennisModel.isSpecial = false;
                         player_IA_tennis_prototype.gameplayTennisModel.isBackhand = false;
+                        player_IA_tennis_prototype.SetSpecialBar();
                     }
                     
                 }

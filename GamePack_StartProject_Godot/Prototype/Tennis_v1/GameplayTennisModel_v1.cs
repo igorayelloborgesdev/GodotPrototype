@@ -160,8 +160,8 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
         public int scoreGameP1 = 0;
         public int scoreGameP2 = 0;
 
-        public int scoreSetP1 = 5;
-        public int scoreSetP2 = 4;
+        public int scoreSetP1 = 0;
+        public int scoreSetP2 = 0;
 
         public int gameSet = 0;
 
@@ -188,8 +188,8 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             scoreGameP1 = 0;
             scoreGameP2 = 0;
 
-            scoreSetP1 = 5;
-            scoreSetP2 = 6;
+            scoreSetP1 = 0;
+            scoreSetP2 = 0;
 
             isTieBreak = false;
 

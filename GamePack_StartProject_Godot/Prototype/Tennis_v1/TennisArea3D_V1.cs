@@ -31,6 +31,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                     {                        
                         ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).gameplayTennisModel.gameEnum = GameplayTennisModel_v1.GameEnum.InGameP2;
                         ((player_tennis_prototype.gameplayTennisModel.ball) as TennisBall_v1).ballBounceCourtEnum = BallBounceCourtEnum.neutral;
+                        player_tennis_prototype.SetSpecialBar();
                     }
                     
                 }
