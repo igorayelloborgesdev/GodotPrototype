@@ -172,7 +172,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                         var backHandForeHandIncrease = 0.0f;
                         if (gameplayTennisModel.gameEnum == GameplayTennisModel_v1.GameEnum.InGameP2)
                         {
-                            var specialCalc = (((float)(this.gameplayTennisModel.player as PlayerTennis_v1).specialBar) / 100.0f) * 2.0f;//<-
+                            var specialCalc = (((float)(this.gameplayTennisModel.player as PlayerTennis_v1).specialBar) / 100.0f) * 2.0f;
                             specialIncrease = (gameplayTennisModel.isSpecial ? specialCalc : 0.0f);                            
                             backHandForeHandIncrease = gameplayTennisModel.isBackhand ? (gameplayTennisModel.player as PlayerTennis_v1).servePower : 0.0f;
                             if(gameplayTennisModel.isSpecial)
@@ -180,8 +180,11 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
                         }                        
                         else
                         {
-                            gameplayTennisModel.isSpecial = false;
-                            backHandForeHandIncrease = (gameplayTennisModel.playerAI as PlayerTennisAI_v1).servePower;
+                            var specialCalc = (((float)(this.gameplayTennisModel.playerAI as PlayerTennisAI_v1).specialBar) / 100.0f) * 2.0f;
+                            specialIncrease = (gameplayTennisModel.isSpecial ? specialCalc : 0.0f);
+                            backHandForeHandIncrease = gameplayTennisModel.isBackhand ? (gameplayTennisModel.playerAI as PlayerTennisAI_v1).servePower : 0.0f;                            
+                            if (gameplayTennisModel.isSpecial)
+                                (this.gameplayTennisModel.playerAI as PlayerTennisAI_v1).specialBar = 0;
                         }
                             
                         ShowHideBallTrail(gameplayTennisModel.isSpecial);

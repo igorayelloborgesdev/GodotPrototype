@@ -38,6 +38,20 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             new GamePackStartProjectGodot.Prototype.Tennis.Range(20.0, 100.0, 2.0),
         };
 
+        public List<GamePackStartProjectGodot.Prototype.Tennis.Range> specialRanges = new List<GamePackStartProjectGodot.Prototype.Tennis.Range>
+        {
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(0.0, 10.0, 100.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(10.0, 20.0, 90.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(20.0, 30.0, 80.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(30.0, 40.0, 70.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(40.0, 50.0, 60.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(50.0, 60.0, 50.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(60.0, 70.0, 40.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(70.0, 80.0, 30.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(80.0, 90.0, 20.0),
+            new GamePackStartProjectGodot.Prototype.Tennis.Range(90.0, 100.0, 10.0),
+        };
+
         RandomNumberGenerator rng = new RandomNumberGenerator();
 
         public override void _Ready()
@@ -188,12 +202,18 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             return rng.RandfRange(0.0f, 100.0f);
         }
         public void SetSpecialBar()
-        {
+        {            
             specialBar += 10;
             if (specialBar >= specialBarMax)
             {
                 specialBar = specialBarMax;
-            }            
+            }
+            var defineSpecial = GamePackStartProjectGodot.Prototype.Tennis.Range.GetRangeValue(specialBar, specialRanges);
+            var defineSpecialRandom = DefineBackhandPosition();
+            if (defineSpecialRandom > defineSpecial)
+            {         
+                gameplayTennisModel.isSpecial = true;
+            }
         }
         public void Reset()
         {

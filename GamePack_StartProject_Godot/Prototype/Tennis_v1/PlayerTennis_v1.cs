@@ -205,8 +205,7 @@ namespace GamePackStartProjectGodot.Prototype.Tennis_v1
             if(specialBar >= specialBarMax)        
             {
                 specialBar = specialBarMax;
-            }
-            GD.Print(specialBar);//<-
+            }            
         }
         public void Reset()
         {

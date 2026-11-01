@@ -147,13 +147,13 @@ namespace GamePackStartProjectGodot.Prototype.Tennis
 
             if (Input.IsKeyPressed(Key.S))
                 this.gameplayTennisModel.isSpecial = true;
-            else
-                this.gameplayTennisModel.isSpecial = false;
+            //else
+            //    this.gameplayTennisModel.isSpecial = false;
 
             if (Input.IsKeyPressed(Key.A))
                 this.gameplayTennisModel.isBackhand = true;
-            else
-                this.gameplayTennisModel.isBackhand = false;
+            //else
+            //    this.gameplayTennisModel.isBackhand = false;
 
             if (Input.IsKeyPressed(Key.A) || Input.IsKeyPressed(Key.S))
             {
